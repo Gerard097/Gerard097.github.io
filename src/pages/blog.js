@@ -5,19 +5,19 @@ import Button from '@material-ui/core/Button';
 
 import Layout from "../components/layout"
 
-class IndexPage extends React.Component 
+class BlogPage extends React.Component 
 {
 
 
     render() {
         return (
-        <Layout>
+        <Layout at="blog">
             <Button variant="contained" color="secondary">
-                Index :D
+                Blogs!
             </Button>
         </Layout>
         )
     }
 }
 
-export default IndexPage;
+export default BlogPage;
