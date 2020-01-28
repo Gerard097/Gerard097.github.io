@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import { createGlobalStyle } from 'styled-components'
-import Flexbox from "flexbox-react";
 import { Link, navigate } from "gatsby";
 import Typography from "@material-ui/core/Typography/Typography";
 import ResposiveMenu from '../components/responsivemenu'
@@ -36,7 +35,7 @@ const Body = styled.div`
 const LogoBase = styled(Typography)`
     user-select: none;
     font-family: consolas;
-    color:rgb(3, 218, 198);
+    color: ${Palette.primaryColor};
     display: block;
 `
 
@@ -46,14 +45,14 @@ const HomeLogo = styled(LogoBase)`
     transition: all 0.3s ease 0s;
     & : hover {
         border-style: ${props => props.isCurrent ? "solid" : "hidden"};
-        text-shadow:0px 0px 0.5rem ${Palette.secondary};
+        text-shadow:0px 0px 0.5rem ${Palette.primaryColor};
         transform: rotate(5deg);
     }
 `
 
-const FooterLogo = styled(LogoBase)`
+// const FooterLogo = styled(LogoBase)`
 
-`
+// `
 
 const GlobalStyle = createGlobalStyle`
   body, html, #___gatsby, #___gatsby > div {
@@ -62,6 +61,20 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     display: flex;
     flex-direction: column;
+  }
+
+  .Typist .Cursor {
+    display: inline-block;
+  
+    &--blinking {
+      opacity: 1;
+      animation: blink 1s linear infinite;
+      @keyframes blink {
+        0% { opacity:1; }
+        50% { opacity:0; }
+        100% { opacity:1; }
+      }
+    }
   }
 `
 
@@ -94,15 +107,15 @@ const NavBarItem = styled.li`
 
 const StyledLink = styled(Link)`
     text-decoration: none;
-    color: ${Palette.secondary};
+    color: ${Palette.primaryColor};
     display: inline-block;    
     transition: all 0.3s ease 0s;
-    border-color: #00000000 #00000000 ${props => props.active ? Palette.secondary : "#00000000"} #00000000;
+    border-color: #00000000 #00000000 ${props => props.current ? Palette.primaryColor : "#00000000"} #00000000;
     border-width: 0 0 0.14rem 0;
     border-style: solid;
     & : hover {
         
-        text-shadow:0px 0px 0.5rem ${Palette.secondary};
+        text-shadow:0px 0px 0.5rem ${Palette.primaryColor};
         transform: rotate(5deg);
     }
     background-color: #00000000;
@@ -116,7 +129,7 @@ const NavLink = props => (
     
     <NavBarItem>
         <StyledLink 
-            active={props.active}
+            current={props.current}
             to={props.to}>
             {props.children}
         </StyledLink>
@@ -153,23 +166,23 @@ class Layout extends React.Component
                     </HomeLogo>
                     <NavBar>
                       <NavLink
-                        active={this.props.at === "skills"}
+                        current={this.props.at === "skills" ? 1 : 0}
                         to="/skills"
                       >
                         Skills
                       </NavLink>
                       <NavLink
-                        active={this.props.at === "services"}
+                        current={this.props.at === "services" ? 1 : 0}
                         to="/services"
                       >
                         Services
                       </NavLink>
                       <NavLink 
-                        active={this.props.at === "blog"} to="/blog">
+                        current={this.props.at === "blog" ? 1 : 0} to="/blog">
                         Blog
                       </NavLink>
                       <NavLink
-                        active={this.props.at === "contact"}
+                        current={this.props.at === "contact" ? 1 : 0}
                         to="/contact"
                       >
                         Contact

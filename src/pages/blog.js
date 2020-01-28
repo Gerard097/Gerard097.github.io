@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+//import styled from "styled-components"
 import Button from '@material-ui/core/Button';
 
 
@@ -13,7 +13,7 @@ class BlogPage extends React.Component
         return (
         <Layout at="blog">
             <Button variant="contained" color="secondary">
-                Blogs!
+                Blogsxx!
             </Button>
         </Layout>
         )

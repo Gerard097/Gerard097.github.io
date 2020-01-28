@@ -1,7 +1,7 @@
 import React from 'react'
 import HamburgerMenu from "react-hamburger-menu";
 import Palette from '../styles/palette'
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 import Collapse from "@material-ui/core/Collapse"
 
 const Navbar = styled.div`
