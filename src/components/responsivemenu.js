@@ -2,6 +2,7 @@ import React from 'react'
 import HamburgerMenu from "react-hamburger-menu";
 import Palette from '../styles/palette'
 import styled, { keyframes } from "styled-components"
+import Collapse from "@material-ui/core/Collapse"
 
 const Navbar = styled.div`
     display: block;
@@ -19,25 +20,6 @@ const CollapsedBar = styled.div`
         display: flex;
         flex-direction: column;
     }
-`
-
-const Collapse = keyframes`
-    0% {
-        
-        transform: scaleY(0);
-    }
-
-    100% {
-        
-        transform: scaleY(1);
-    }
-`
-
-const AnimatedCollapse = styled.div`
-    overflow: hidden;
-    transition: max-height ${props => props.animDur}s linear; // note that we're transitioning flex, not height!
-    
-    max-height: ${props => props.animate ? "200px" : "1px"};
 `
 
 class ResponsiveMenu extends React.Component
@@ -92,11 +74,10 @@ class ResponsiveMenu extends React.Component
                 animationDuration={animDuration}
               >
               </HamburgerMenu>
-              <AnimatedCollapse 
-                animDur={0.2}
-                animate={this.state.showMenu}>
+              <Collapse
+                in={this.state.showMenu}>
                 {this.state.shouldRender === true ? this.props.menu : null}
-              </AnimatedCollapse>                
+              </Collapse>                
             </CollapsedBar>
           </div>
         )
