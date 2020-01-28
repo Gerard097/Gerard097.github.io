@@ -4,8 +4,7 @@ import { createGlobalStyle } from 'styled-components'
 import Flexbox from "flexbox-react";
 import { Link, navigate } from "gatsby";
 import Typography from "@material-ui/core/Typography/Typography";
-import ResposiveMenu from 'react-responsive-navbar'
-
+import ResposiveMenu from '../components/responsivemenu'
 import Palette from '../styles/palette'
 
 import 'typeface-roboto';
@@ -38,7 +37,7 @@ const LogoBase = styled(Typography)`
     user-select: none;
     font-family: consolas;
     color:rgb(3, 218, 198);
-    display: inline-block;
+    display: block;
 `
 
 const HomeLogo = styled(LogoBase)`
@@ -64,10 +63,6 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
   }
-
-  .small-menu {
-      
-  }
 `
 
 const NavBarContainer = styled.div`
@@ -77,7 +72,7 @@ const NavBarContainer = styled.div`
 
   @media(max-width: 550px) {
     flex-direction: column;
-    
+    align-items: center;
   }
 `
 
@@ -102,7 +97,7 @@ const StyledLink = styled(Link)`
     color: ${Palette.secondary};
     display: inline-block;    
     transition: all 0.3s ease 0s;
-    border-color: #00000000 #00000000 ${props => props.isCurrent ? Palette.secondary : "#00000000"} #00000000;
+    border-color: #00000000 #00000000 ${props => props.active ? Palette.secondary : "#00000000"} #00000000;
     border-width: 0 0 0.14rem 0;
     border-style: solid;
     & : hover {
@@ -121,7 +116,7 @@ const NavLink = props => (
     
     <NavBarItem>
         <StyledLink 
-            isCurrent={props.isCurrent}
+            active={props.active}
             to={props.to}>
             {props.children}
         </StyledLink>
@@ -132,43 +127,60 @@ class Layout extends React.Component
 {
     constructor(props) {
         super(props);
+        this.state = {
+            menuOpen: false
+        }
+        this.hamburgerMenu = React.createRef();
     }
 
     render() {
-        console.log(this.props.at);
+        
         return (
           <Body>
-            <GlobalStyle/>
+            <GlobalStyle />
             <Header>
-                <ResposiveMenu
-                     menuOpenButton={<div>X</div>}
-                     menuCloseButton={<div>T</div>}
-                     changeMenuOn="550px"
-                     smallMenuClassName="small-menu"
-                     menu={
-                        <NavBarContainer>
-                            <HomeLogo 
-                                onClick ={()=>{navigate("/")}}
-                                variant='h3'>
-                                {"<GPH>"}
-                            </HomeLogo>
-                            <NavBar>
-                                <NavLink isCurrent={this.props.at === "skills"} to="/skills">Skills</NavLink>
-                                <NavLink isCurrent={this.props.at === "services"} to="/services">Services</NavLink>
-                                <NavLink isCurrent={this.props.at === "blog"} to="/blog">Blog</NavLink>
-                                <NavLink isCurrent={this.props.at === "contact"} to="/contact">Contact</NavLink>
-                            </NavBar>
-                        </NavBarContainer>
-                      }
-                >
-                </ResposiveMenu>
+              <ResposiveMenu
+                changeMenuOn="550px"
+                menu={
+                  <NavBarContainer>
+                    <HomeLogo
+                      onClick={() => {
+                        navigate("/")
+                      }}
+                      variant="h3"
+                    >
+                      {"<GPH>"}
+                    </HomeLogo>
+                    <NavBar>
+                      <NavLink
+                        active={this.props.at === "skills"}
+                        to="/skills"
+                      >
+                        Skills
+                      </NavLink>
+                      <NavLink
+                        active={this.props.at === "services"}
+                        to="/services"
+                      >
+                        Services
+                      </NavLink>
+                      <NavLink 
+                        active={this.props.at === "blog"} to="/blog">
+                        Blog
+                      </NavLink>
+                      <NavLink
+                        active={this.props.at === "contact"}
+                        to="/contact"
+                      >
+                        Contact
+                      </NavLink>
+                    </NavBar>
+                  </NavBarContainer>
+                }
+              ></ResposiveMenu>
             </Header>
-            <Main>
-                {this.props.children}
-            </Main>
-            <Footer>
-                
-            </Footer>
+            <Main>{this.props.children}</Main>
+            <Footer></Footer>
           </Body>
         )
     }

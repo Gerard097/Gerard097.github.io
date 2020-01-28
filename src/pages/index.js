@@ -12,9 +12,7 @@ class IndexPage extends React.Component
     render() {
         return (
         <Layout>
-            <Button variant="contained" color="secondary">
-                Index :D
-            </Button>
+            
         </Layout>
         )
     }
