@@ -13,15 +13,17 @@ const Header = styled.header`
 `
 
 const Footer = styled.footer`
-    margin: 1rem 1rem 1rem 1rem;   
+    color: ${Palette.primaryColor};
+    font-size: 1rem;
+    margin: 1rem 1rem 1rem 1rem;
+    font-family: consolas;
 `
 
 const Main = styled.main`
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-    
+    align-items: center;    
 `
 
 const Body = styled.div`
@@ -57,6 +59,7 @@ const HomeLogo = styled(LogoBase)`
 const GlobalStyle = createGlobalStyle`
   body, html, #___gatsby, #___gatsby > div {
     margin: 0;
+    min-height: 100% !important;
     height: 100%;
     width: 100%;
     display: flex;
@@ -64,8 +67,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .Typist .Cursor {
-    display: inline-block;
-  
+    
     &--blinking {
       opacity: 1;
       animation: blink 1s linear infinite;
@@ -147,11 +149,14 @@ class Layout extends React.Component
     }
 
     render() {
-        
+        const {headerStyle, mainStyle, footerStyle} = this.props;
+
+        console.log("Main style: ", mainStyle,  " Props: ", this.props);
+
         return (
           <Body>
             <GlobalStyle />
-            <Header>
+            <Header style={headerStyle}>
               <ResposiveMenu
                 changeMenuOn="550px"
                 menu={
@@ -192,8 +197,12 @@ class Layout extends React.Component
                 }
               ></ResposiveMenu>
             </Header>
-            <Main>{this.props.children}</Main>
-            <Footer></Footer>
+            <Main style={mainStyle} >
+                {this.props.children}
+            </Main>
+            <Footer style={footerStyle}>
+                Gerardo Hernández {(new Date().getFullYear())}
+            </Footer>
           </Body>
         )
     }
