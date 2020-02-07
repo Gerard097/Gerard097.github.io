@@ -1,7 +1,7 @@
 const Palette =  {
-    primaryColor: "#BB86FC",
+    primaryColor: "#dbd8e3",
     primaryVariant: "#6200EE",
-    secondary: "#03DAC6",
+    secondary: "#927fbf",
     background: "#121212"
 }
 

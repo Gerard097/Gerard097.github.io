@@ -25,15 +25,30 @@ const SSpan = styled.span`
 
 `
 
+const Shuffle = str => {
+    
+    let s = str.split('').sort(function(){return 0.5-Math.random()}).join('');
+
+    return s;
+}
+
+let randomSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$@&%?';
+let chars = Shuffle(randomSet) + Shuffle(randomSet) + Shuffle(randomSet);
+let cIndex = 0;
+
+console.log(chars);
+
 const RandomTitle = size => {
-    let result = "";
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charLength = chars.length;
-    for (let i = 0; i < size; ++i) {
-        let char = chars.charAt(Math.floor(Math.random() * charLength));
-        result += char;
+    let idx = cIndex;
+
+    cIndex += size;
+
+    if (cIndex >= chars.length) {
+        idx = chars.length - size;
+        cIndex = 0;
     }
-    return result.substr(0, size);
+
+    return chars.substr(idx, size);
 }
 
 const titles = ["Gamer", "Software Engineer", "Web Developer", "Game Developer", "Dreamer", "Magician", "Coder", "Traveler", "C++ Nerd", "Team Player"];
@@ -76,7 +91,7 @@ class IndexPage extends React.Component
         const setRandom = () => {
             if (this && this.state.showRandomDigits) {
                 this.setState({currentTitle: RandomTitle(7)});
-                setTimeout(setRandom, 100);
+                setTimeout(setRandom, 50);
             }
         }
         setTimeout(() => { if (this) this.selectTitle() }, 1200);
