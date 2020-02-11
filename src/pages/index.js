@@ -80,7 +80,9 @@ class IndexPage extends React.Component
         
         const index = Math.floor(Math.random() * indices.length);;
 
-        this.setState({showRandomDigits: false, currentTitle: " " + titles[indices[index]]});
+        const state = {showRandomDigits: false, currentTitle: " " + titles[indices[index]]};
+
+        this.setState(state);
 
         indices.splice(index, 1);
 
