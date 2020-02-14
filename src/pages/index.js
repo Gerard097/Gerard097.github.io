@@ -30,6 +30,16 @@ const TextCenterd = styled.div`
     padding: 10rem 2rem;
 `
 
+const ShuffleArray = a => {
+
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+
+    return a;
+}
+
 const Shuffle = str => {
     
     let s = str.split('').sort(function(){return 0.5-Math.random()}).join('');
@@ -58,7 +68,7 @@ const RandomTitle = size => {
 
 const titles = ["Gamer", "Software Engineer", "Web Developer", "Game Developer", "Dreamer", "Wizard", "Coder", "Traveler", "C++ Nerd", "Team Player"];
 
-let indices = Array.apply(null, Array(titles.length)).map((v, i) => i);
+let indices = [];
 
 class IndexPage extends React.Component 
 {
@@ -76,21 +86,22 @@ class IndexPage extends React.Component
 
         if (indices.length === 0) {
             indices = Array.apply(null, Array(titles.length)).map((v, i) => i);
+            ShuffleArray(indices);
         }
         
-        const index = Math.floor(Math.random() * indices.length);;
+        const index = indices.splice(0, 1)[0];
 
-        const state = {showRandomDigits: false, currentTitle: " " + titles[indices[index]]};
+        const state = {showRandomDigits: false, currentTitle: " " + titles[index]};
 
         this.setState(state);
 
-        indices.splice(index, 1);
+        const nextTitleTimeOut = 4000;
 
         setTimeout(() => {
             if (this) {
                 this.setState({showRandomDigits: true}, () => {this.triggerRandomTitle()});
             }
-        }, 5000);
+        }, nextTitleTimeOut);
     }
 
     triggerRandomTitle() {       
