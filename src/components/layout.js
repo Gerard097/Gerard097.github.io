@@ -67,7 +67,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .Typist .Cursor {
-    
     &--blinking {
       opacity: 1;
       animation: blink 1s linear infinite;

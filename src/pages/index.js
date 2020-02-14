@@ -113,7 +113,10 @@ class IndexPage extends React.Component
                 setTimeout(setRandom, 50);
             }
         }
-        setTimeout(() => { if (this) this.selectTitle() }, 1200);
+
+        const randomTitleDuration = 1000;
+
+        setTimeout(() => { if (this) this.selectTitle() }, randomTitleDuration);
         setTimeout(setRandom, 50);
     }
 
@@ -123,14 +126,14 @@ class IndexPage extends React.Component
         <Layout mainStyle={{alignItems:"flex-start", justifyContent: "flex-start"}}>
             <TextCenterd>
                 <STypist
-                    startDelay={300}
+                    startDelay={650}
                     onTypingDone={() => this.triggerRandomTitle()}
-                    cursor={{show:false}}
+                    cursor={{show:true, hideWhenDone: true, hideWhenDoneDelay: 0}}
                 >
                     Hi.
-                    <Typist.Delay ms={650}/> 
+                    <Typist.Delay ms={700}/> 
                     {` My name is Gerardo, `}
-                    <Typist.Delay ms={250}/> 
+                    <Typist.Delay ms={350}/> 
                     {`and I'm a`}
                 </STypist>
                 <SSpan>{this.state.currentTitle}</SSpan>
