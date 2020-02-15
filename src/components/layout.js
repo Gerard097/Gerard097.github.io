@@ -150,7 +150,7 @@ class Layout extends React.Component
     render() {
         const {headerStyle, mainStyle, footerStyle} = this.props;
 
-        console.log("Main style: ", mainStyle,  " Props: ", this.props);
+        //console.log("Main style: ", mainStyle,  " Props: ", this.props);
 
         return (
           <Body>
