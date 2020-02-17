@@ -28,7 +28,7 @@ const Main = styled.main`
 
 const Body = styled.div`
     height: 100%;
-    background-color: ${Palette.background};
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -64,6 +64,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     display: flex;
     flex-direction: column;
+    background-color: ${Palette.background};
   }
 
   .Typist .Cursor {

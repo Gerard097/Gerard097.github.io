@@ -13,8 +13,8 @@ const STypist = styled(Typist)`
     color: ${Palette.secondary};
     font-size: 3rem;
     font-family: consolas;
-   
-    align-self: flex-start;
+    text-align: center;
+    align-self: center;
     user-select: none;
     display: inline;
 `
@@ -23,15 +23,18 @@ const SSpan = styled.div`
     color: ${Palette.primaryVariant};
     font-size: 3rem;
     font-family: consolas;
-    
-    align-self: flex-end;
+    text-align: center;
+    align-self: center;
     text-shadow:0px 0px 0.5rem ${Palette.primaryVariant};
     user-select: none;
-    display: inline;
+    display: block;
 `
 
 const TextCenterd = styled.div`
     padding: 10rem 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 `
 
 const ShuffleArray = a => {
@@ -97,10 +100,18 @@ class IndexPage extends React.Component
             titleFormat: "",
             stateIndex: -1//nothing
         }
+
+        this.targetDifference = 0;
     }
 
     componentDidMount() {
-        this.randomizeTitle(this);
+        this.mounted = true;
+        setTimeout(() => this.randomizeTitle(), 100);
+    }
+
+    componentWillUnmount() {
+        console.log("Unmount")
+        this.mounted = false;
     }
 
     selectTargetTitle() {
@@ -125,31 +136,36 @@ class IndexPage extends React.Component
         this.setState(state, () => { this.triggerRandomTitle()});
     }
 
-    randomizeTitle(self) {
+    randomizeTitle() {
 
-        if (self) {
-            
-            //console.log(self.state);
+        if (this.mounted) {            
 
-            const validIndices = self.state.stateIndex === 0 || self.state.stateIndex === 1;
+            const validIndices = this.state.stateIndex === 0 || this.state.stateIndex === 1;
 
             if (validIndices) {
                 
-                const {currentTitle, titleFormat } = self.state;
+                const { currentTitle, titleFormat, targetTitle } = this.state;
                 let newTitle = "";
                 for (let i = 0; i < currentTitle.length; ++i) {
-                    if (i >= titleFormat.length || titleFormat[i] === 0) {
-                        newTitle += NextRandomChar(1);
+                    
+                    if (i < targetTitle.length) {
+                        if (targetTitle[i] === ' ') {
+                            newTitle += " ";
+                            continue;
+                        }
+                        else if (titleFormat[i] !== 0) {
+                            newTitle += currentTitle[i];
+                            continue;
+                        }
                     }
-                    else {
-                        newTitle += currentTitle[i];
-                    }
+
+                    newTitle += NextRandomChar(1);
                 }
 
-                self.setState({currentTitle: newTitle});
+                this.setState({currentTitle: newTitle});
             }
 
-            setTimeout(self.randomizeTitle, 50, self);
+            setTimeout(() => this.randomizeTitle(), 50);
         }
     }
 
@@ -157,7 +173,7 @@ class IndexPage extends React.Component
 
         const setRandom = () => {
             //While not showcasing
-            if (this) {
+            if (this.mounted) {
 
                 let index = this.state.stateIndex;
                 
@@ -171,13 +187,20 @@ class IndexPage extends React.Component
 
                     let diff = target.length - current.length;
 
+                    if (this.targetDifference === 0) {
+                        this.targetDifference = Math.abs(diff);
+                    }
+
                     //If last title has the same lenght as current
                     if (diff === 0) {
                         this.setState({stateIndex : stepStates["reveal"]});
                         //Give 2.5 seconds before revealing
-                        stepDuration = 2500;
+                        stepDuration = 750;
                     }
                     else {
+
+                        stepDuration = 750 / this.targetDifference;
+
                         let append = diff > 0 ? true : false;
 
                         if (append) {
@@ -199,11 +222,11 @@ class IndexPage extends React.Component
                     //console.log("revelea");
 
                     if (revealIndices.length) {
-
-                        stepDuration = 150;
-
+                        //Time revealing
+                        //Total should be 2.3 seconds
+                        
                         const nextReveal = revealIndices.splice(0, 1)[0];
-
+                        
                         const {currentTitle, targetTitle, titleFormat} = this.state;
                         
                         let title = currentTitle.replaceAt(nextReveal, targetTitle[nextReveal]);
@@ -211,12 +234,18 @@ class IndexPage extends React.Component
                         
                         format[nextReveal] = 1;
 
+                        stepDuration = 1000 / currentTitle.length;
+
+                        //console.log(stepDuration);
+
                         this.setState({currentTitle: title, titleFormat: format});
                     }
                     else {
-                        console.log("Showcase");
+                        //console.log("Showcase");
+                        //Time Showcasing
                         stepDuration = 4000;
                         this.setState({stateIndex : stepStates["showcase"]});
+                        this.targetDifference = 0;
                     }
                 }
                 else {
@@ -231,8 +260,6 @@ class IndexPage extends React.Component
                 setTimeout(setRandom, stepDuration);
             }
         }
-
-        const randomTitleDuration = 1000;
 
         //setTimeout(() => { if (this) this.selectTitle() }, randomTitleDuration);
         setTimeout(setRandom, 150);
@@ -254,7 +281,7 @@ class IndexPage extends React.Component
                     <Typist.Delay ms={350}/> 
                     {`and I'm a`}
                 </STypist>
-                <SSpan>{" " + this.state.currentTitle}</SSpan>
+                <SSpan>{this.state.currentTitle}</SSpan>
             </TextCenterd>            
         </Layout>
         )
