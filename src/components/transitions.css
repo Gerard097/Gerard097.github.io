@@ -1,24 +1,77 @@
-.transition-container {
+/*******Flip Animation*******/
+
+.transition-outer.flip {
     width: 100%;
     height: 100%;
+    perspective: 1750px;
 }
 
-.slide-enter {
+.transition-inner.flip {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.transition-container.flip {
+    height: 100%;
+    width: 100%;
+}
+
+/** transform-origin will add an interesting effect of sliding left and then getting in from front
+    /* -50 Left
+    /* 150 Right */
+.transition-container.flip.right {
+    transform-origin: 150vw;
+}
+
+.transition-container.flip.left {
+    transform-origin: -50vw;
+}
+
+.transition-container.flip.entering {
     position: absolute;
-    /* transform: rotateX(-180deg); */
+    /*transform: rotateY(-90deg);*/
+    transform: translateX(100vw);
+}
+
+.transition-container.flip.entered {
+    /* transform: rotateY(0deg); */
+    transform: translateX(0);
+    backface-visibility: hidden;
+}
+
+.transition-container.flip.exiting {
+    /* transform: rotateY(90deg); */
+    transform: translateX(100vw);
+    backface-visibility: hidden;
+}
+
+/*!**************************!*/
+
+/*******Slide Animation*******/
+
+.transition-container.slide.entering {
+    position: absolute;
+    transform: translateX(-100vw);
     opacity: 0;
 }
 
-.slide-enter-active {
-    transition: all 2500ms ease-in-out;
+.transition-container.slide.entering.right {
+    transform: translateX(100vw);
+}
+
+.transition-container.slide.entered {
+    transform: translateX(0);
     opacity: 1;
 }
 
-.slide-exit {
-    opacity: 1;
-}
-
-.slide-exit.slide-exit-active {
-    transition: opacity 2500ms ease-in-out;
+.transition-container.slide.exiting {
+    transform: translateX(100vw);
     opacity: 0;
 }
+
+.transition-container.slide.exiting.right {
+    transform: translateX(-100vw);
+}
+
+/*!**************************!*/

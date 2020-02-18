@@ -158,8 +158,6 @@ class Layout extends React.Component
 
         const {location} = this.props;
 
-        console.log(location);
-
         return (
           <Body>
             <GlobalStyle />

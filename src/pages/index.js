@@ -11,7 +11,7 @@ String.prototype.replaceAt = function(index, replacement) {
 
 const STypist = styled(Typist)`
     color: ${Palette.secondary};
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-family: consolas;
     text-align: center;
     align-self: center;
@@ -21,7 +21,7 @@ const STypist = styled(Typist)`
 
 const SSpan = styled.div`
     color: ${Palette.primaryVariant};
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-family: consolas;
     text-align: center;
     align-self: center;
@@ -270,7 +270,7 @@ class IndexPage extends React.Component
         return (
         <TextCenterd>
             <STypist
-                startDelay={650}
+                startDelay={1000}
                 onTypingDone={() => this.selectTargetTitle()}
                 cursor={{show:true, hideWhenDone: true, hideWhenDoneDelay: 0}}
             >
