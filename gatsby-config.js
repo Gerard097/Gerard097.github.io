@@ -5,6 +5,7 @@
  */
 
 module.exports = {
+
   plugins: [
     {
       resolve: `gatsby-plugin-material-ui`,
@@ -15,5 +16,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-react-helmet`, 
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/layouts/index.js`),
+      },
+    },
   ],
 }

@@ -1,0 +1,24 @@
+.transition-container {
+    width: 100%;
+    height: 100%;
+}
+
+.slide-enter {
+    position: absolute;
+    /* transform: rotateX(-180deg); */
+    opacity: 0;
+}
+
+.slide-enter-active {
+    transition: all 2500ms ease-in-out;
+    opacity: 1;
+}
+
+.slide-exit {
+    opacity: 1;
+}
+
+.slide-exit.slide-exit-active {
+    transition: opacity 2500ms ease-in-out;
+    opacity: 0;
+}

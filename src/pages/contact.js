@@ -3,7 +3,7 @@ import React from "react"
 import Button from '@material-ui/core/Button';
 
 
-import Layout from "../components/layout"
+//import Layout from "../index"
 
 class ContactPage extends React.Component 
 {
@@ -11,11 +11,9 @@ class ContactPage extends React.Component
 
     render() {
         return (
-        <Layout at="contact">
-            <Button variant="contained" color="secondary">
-                Skills
-            </Button>
-        </Layout>
+        <Button variant="contained" color="secondary">
+            Skills
+        </Button>
         )
     }
 }

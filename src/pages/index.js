@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import Layout from "../components/layout"
+//import Layout from "../components/layout"
 import Typist from "react-typist";
 import Palette from '../styles/palette'
 
@@ -268,22 +268,20 @@ class IndexPage extends React.Component
     render() {
 
         return (
-        <Layout mainStyle={{alignItems:"flex-start", justifyContent: "flex-start"}}>
-            <TextCenterd>
-                <STypist
-                    startDelay={650}
-                    onTypingDone={() => this.selectTargetTitle()}
-                    cursor={{show:true, hideWhenDone: true, hideWhenDoneDelay: 0}}
-                >
-                    Hi.
-                    <Typist.Delay ms={700}/> 
-                    {` My name is Gerardo, `}
-                    <Typist.Delay ms={350}/> 
-                    {`and I'm a`}
-                </STypist>
-                <SSpan>{this.state.currentTitle}</SSpan>
-            </TextCenterd>            
-        </Layout>
+        <TextCenterd>
+            <STypist
+                startDelay={650}
+                onTypingDone={() => this.selectTargetTitle()}
+                cursor={{show:true, hideWhenDone: true, hideWhenDoneDelay: 0}}
+            >
+                Hi.
+                <Typist.Delay ms={700}/> 
+                {` My name is Gerardo, `}
+                <Typist.Delay ms={350}/> 
+                {`and I'm a`}
+            </STypist>
+            <SSpan>{this.state.currentTitle}</SSpan>
+        </TextCenterd>
         )
     }
 }

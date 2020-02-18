@@ -3,19 +3,16 @@ import React from "react"
 import Button from '@material-ui/core/Button';
 
 
-import Layout from "../components/layout"
+//import Layout from "../index"
 
-class BlogPage extends React.Component 
-{
+class BlogPage extends React.Component {
 
 
     render() {
         return (
-        <Layout at="blog">
-            <Button variant="contained" color="secondary">
-                Blogsxx!
-            </Button>
-        </Layout>
+        <Button variant="contained" color="secondary">
+            Blogsxx!
+        </Button>
         )
     }
 }
