@@ -156,7 +156,9 @@ class Layout extends React.Component
     render() {
         //const {headerStyle, mainStyle, footerStyle} = this.props;
 
-        console.log(this.props.location);
+        const {location} = this.props;
+
+        console.log(location);
 
         return (
           <Body>
@@ -176,23 +178,23 @@ class Layout extends React.Component
                     </HomeLogo>
                     <NavBar>
                       <NavLink
-                        current={this.props.at === "skills" ? 1 : 0}
+                        current={location.pathname === "/skills" ? 1 : 0}
                         to="/skills"
                       >
                         Skills
                       </NavLink>
                       <NavLink
-                        current={this.props.at === "services" ? 1 : 0}
+                        current={location.pathname === "/services" ? 1 : 0}
                         to="/services"
                       >
                         Services
                       </NavLink>
                       <NavLink 
-                        current={this.props.at === "blog" ? 1 : 0} to="/blog">
+                        current={location.pathname === "/blog" ? 1 : 0} to="/blog">
                         Blog
                       </NavLink>
                       <NavLink
-                        current={this.props.at === "contact" ? 1 : 0}
+                        current={location.pathname === "/contact" ? 1 : 0}
                         to="/contact"
                       >
                         Contact
@@ -202,7 +204,7 @@ class Layout extends React.Component
                 }
               ></ResposiveMenu>
             </Header>
-            <Transition location={this.props.location}>
+            <Transition location={location}>
                 <Main>
                     {this.props.children}
                 </Main>
