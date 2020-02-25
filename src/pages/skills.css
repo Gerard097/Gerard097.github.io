@@ -1,0 +1,32 @@
+.carousel-container {
+    width: 8%;
+    
+    perspective: 10px;
+}
+
+.carousel {
+    width: 100%;
+}
+
+/*Div containing slide-img*/
+.slide-inner {
+    margin: auto auto;
+}
+
+.slide-img {
+    user-select: none;
+}
+
+/*Carousel li element*/
+li.slide {
+    background-color: transparent !important;
+    display: inline-flex !important;
+    /* transform: rotateY(-35deg); */
+    transition: transform 0.5s ease-in-out;
+    /*transform-style: preserve-3d;*/
+    transform: scale(0.75);
+}
+
+.slide.selected {
+    transform: scale(1.0);
+}

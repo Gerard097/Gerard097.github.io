@@ -19,6 +19,7 @@ const Footer = styled.footer`
     font-size: 1rem;
     margin: 1rem 1rem 1rem 1rem;
     font-family: consolas;
+    user-select: none;
 `
 
 const Main = styled.main`
@@ -114,6 +115,7 @@ const NavBarItem = styled.li`
 
 const StyledLink = styled(Link)`
     text-decoration: none;
+    user-select: none;
     color: ${Palette.primaryColor};
     display: inline-block;    
     transition: all 0.3s ease 0s;
