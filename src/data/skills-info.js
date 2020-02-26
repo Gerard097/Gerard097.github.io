@@ -1,17 +1,6 @@
 import React from 'react'
 
 export const skills = {
-    "C++" : {
-        img: "https://4.bp.blogspot.com/-B0Q_XqC_HEE/V4OrxNXrtII/AAAAAAAAB2Q/RORWYm9FfFM7JR6SWHxRdgajsYDDxMjLwCLcB/s1600/C__.png"
-        // Frame: ({key}) => (
-        // // <svg {...props} viewBox="0 0 128 128">
-        // //     <path fill="#D26383" d="M115.4 30.7l-48.3-27.8c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.4 1 3.5l106.8-62c-.6-1.2-1.5-2.1-2.4-2.7z"></path><path fill="#9C033A" d="M10.7 95.3c.5.8 1.2 1.5 1.9 1.9l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c1.7-1 2.9-3.5 2.9-5.4v-55.7c0-.9-.1-1.9-.6-2.8l-106.6 62z"></path><path fill="#fff" d="M85.3 76.1c-4.2 7.4-12.2 12.4-21.3 12.4-13.5 0-24.5-11-24.5-24.5s11-24.5 24.5-24.5c9.1 0 17.1 5 21.3 12.5l13-7.5c-6.8-11.9-19.6-20-34.3-20-21.8 0-39.5 17.7-39.5 39.5s17.7 39.5 39.5 39.5c14.6 0 27.4-8 34.2-19.8l-12.9-7.6z"></path><path d="M82.1 61.8h5.2v-5.3h4.4v5.3h5.3v4.4h-5.3v5.2h-4.4v-5.2h-5.2v-4.4zM100.6 61.8h5.2v-5.3h4.4v5.3h5.3v4.4h-5.3v5.2h-4.4v-5.2h-5.2v-4.4z"></path>
-        // // </svg>
-        // <div key={key}>
-        //     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png"></img>
-        // </div>
-        // )
-    },
     "React" : {
         img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/1200px-React.svg.png"
         // Frame: ({key}) => (
@@ -22,6 +11,17 @@ export const skills = {
         //     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png"></img>
         // </div>
         //)
+    },
+    "C++" : {
+        img: "https://4.bp.blogspot.com/-B0Q_XqC_HEE/V4OrxNXrtII/AAAAAAAAB2Q/RORWYm9FfFM7JR6SWHxRdgajsYDDxMjLwCLcB/s1600/C__.png"
+        // Frame: ({key}) => (
+        // // <svg {...props} viewBox="0 0 128 128">
+        // //     <path fill="#D26383" d="M115.4 30.7l-48.3-27.8c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.4 1 3.5l106.8-62c-.6-1.2-1.5-2.1-2.4-2.7z"></path><path fill="#9C033A" d="M10.7 95.3c.5.8 1.2 1.5 1.9 1.9l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c1.7-1 2.9-3.5 2.9-5.4v-55.7c0-.9-.1-1.9-.6-2.8l-106.6 62z"></path><path fill="#fff" d="M85.3 76.1c-4.2 7.4-12.2 12.4-21.3 12.4-13.5 0-24.5-11-24.5-24.5s11-24.5 24.5-24.5c9.1 0 17.1 5 21.3 12.5l13-7.5c-6.8-11.9-19.6-20-34.3-20-21.8 0-39.5 17.7-39.5 39.5s17.7 39.5 39.5 39.5c14.6 0 27.4-8 34.2-19.8l-12.9-7.6z"></path><path d="M82.1 61.8h5.2v-5.3h4.4v5.3h5.3v4.4h-5.3v5.2h-4.4v-5.2h-5.2v-4.4zM100.6 61.8h5.2v-5.3h4.4v5.3h5.3v4.4h-5.3v5.2h-4.4v-5.2h-5.2v-4.4z"></path>
+        // // </svg>
+        // <div key={key}>
+        //     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png"></img>
+        // </div>
+        // )
     },
     "Javascript" : {
         img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png"
@@ -34,33 +34,33 @@ export const skills = {
         // </div>
         //)
     },
-    // "HTML 5" : {
-    //     //imgSrc: "https://image.flaticon.com/icons/png/512/1216/1216733.png"
-    // },
-    // "CSS 3" : {
-    //     //imgSrc: "https://i0.pngocean.com/files/893/87/686/cascading-style-sheets-logo-clip-art-css3-html-css3-logo.jpg"
-    // },
-    // "Qt": {
-        
-    // },
-    // "Python" : {
-
-    // },
-    // "SFML 2": {
-
-    // },
-    // "Cocos2D" : {
-
-    // },
-    // "Unity" : {
-
-    // },
-    // "C#" : {
-
-    // },
-    // "Flask" : {
-
-    // },
+    "HTML 5" : {
+        img: "https://image.flaticon.com/icons/png/512/1216/1216733.png"
+    },
+    "CSS 3" : {
+        img: "https://www.logolynx.com/images/logolynx/s_3b/3b9d42a73e06ccac04deb9073e5235ba.png"
+    },
+     "Qt": {
+        img: "https://www.stickpng.com/assets/images/58481514cef1014c0b5e4964.png"    
+    },
+    "Python" : {
+        img: "https://cdn.freebiesupply.com/logos/large/2x/python-5-logo-png-transparent.png"
+    },
+     "SFML 2": {
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/SFML_Logo.svg/1200px-SFML_Logo.svg.png"
+    },
+    "Cocos2D" : {
+        img: "https://developer.si2soluciones.es/wp-content/uploads/2015/06/2dx_icon_512_rounded.png"
+    },
+    "Unity" : {
+        img: "https://i.ya-webdesign.com/images/unity-logo-white-png.png"
+    },
+     "C#" : {
+        img: "https://seeklogo.com/images/C/c-sharp-c-logo-02F17714BA-seeklogo.com.png"
+    },
+    "Flask" : {
+        img: "https://www.kindpng.com/picc/m/188-1882416_flask-python-logo-hd-png-download.png"
+    },
     // "Boost" : {
 
     // },

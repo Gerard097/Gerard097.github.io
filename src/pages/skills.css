@@ -1,32 +1,61 @@
-.carousel-container {
-    width: 8%;
-    
-    perspective: 10px;
-}
-
-.carousel {
+.root-container {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-/*Div containing slide-img*/
+.container-imp {
+    height: 11rem;
+    width: 40%;
+    perspective: 500px;
+    overflow: visible;
+}
+
+/*ul item from carousel*/
+.slider-container-imp {
+    height: 100%;
+    /* height: 100%;
+    width: 100%; */
+}
+
+/*li item from ul list*/
+.slide-imp {
+    /* transform: scale(0.75); */
+    text-align: center;
+    height: 100%;
+    /* justify-content: center;
+    align-items: center;
+    display: flex; */
+}
+
 .slide-inner {
-    margin: auto auto;
+    height: 100%;
+    /* width: 100%; */
+    /* height: 80%; */
+    transform: scale(1) translateY(0);
+    /* overflow: visible; */
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.5s ease-in-out;
+}
+
+.react-multi-carousel-item {
+    
 }
 
 .slide-img {
+    width: 50%;
+    height: auto;
     user-select: none;
+    -webkit-user-drag: none;
+    /* width: 100px;
+    height: 100px; */
 }
 
-/*Carousel li element*/
-li.slide {
-    background-color: transparent !important;
-    display: inline-flex !important;
-    /* transform: rotateY(-35deg); */
-    transition: transform 0.5s ease-in-out;
-    /*transform-style: preserve-3d;*/
-    transform: scale(0.75);
-}
-
-.slide.selected {
-    transform: scale(1.0);
+.react-multi-carousel-dot-list {
+    bottom: 0;
 }
