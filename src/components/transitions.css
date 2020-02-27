@@ -1,3 +1,15 @@
+.transition-outer {
+    flex: 1;
+}
+
+.transition-inner {
+    height: 100%;
+}
+
+.transition-container {
+    height: 100%;
+}
+
 /*******Flip Animation*******/
 
 .transition-outer.flip {

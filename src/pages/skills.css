@@ -3,7 +3,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .container-imp {
@@ -11,6 +12,8 @@
     width: 40%;
     perspective: 500px;
     overflow: visible;
+    margin-top: 7rem;
+    margin-bottom: 2rem;
 }
 
 /*ul item from carousel*/
@@ -31,20 +34,16 @@
 }
 
 .slide-inner {
-    height: 100%;
     /* width: 100%; */
     /* height: 80%; */
-    transform: scale(1) translateY(0);
+    transform: scale(0.6) translateY(0);
     /* overflow: visible; */
     justify-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: transform 0.5s ease-in-out;
-}
-
-.react-multi-carousel-item {
-    
+    margin-top: 3rem;
 }
 
 .slide-img {
@@ -57,5 +56,102 @@
 }
 
 .react-multi-carousel-dot-list {
-    bottom: 0;
+    bottom: -1rem;
+}
+
+/*
+    Container Card 
+*/
+
+.container-card-imp {
+    height: 20rem;
+    width: 100%;
+}
+
+.slide-card-top {
+    font-size: 1.5rem;
+    color: white;
+    user-select: none;
+    opacity: 0;
+    display: block;
+    width: fit-content;
+    white-space: nowrap;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slide-card-out {
+    transition: transform 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    align-items: center;
+}
+
+
+/*Skills areas*/
+
+.skill-area-root {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.skill-area-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+.skill-area-container > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.skill-area-container > p {
+    font-family: "Consolas";
+    font-size: 1.2rem;
+    color: white;
+}
+
+.skill-area-container > div > img {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1);
+}
+
+.skill-area-container > div > img:hover {
+    transform: scale(1.1);
+}
+
+@media (min-width: 550px){
+    .skill-area-container {
+        width: calc(50% - 1rem);
+    }
+}
+
+@media (min-width: 1340px){
+    .skill-area-container > div > img {
+        max-width: 4rem;
+        max-height: 4rem;
+        width: auto;
+        height: auto;
+        display: block;
+        margin: 0.7rem;
+    }
+
+    .skill-area-container > p {
+        font-family: "Consolas";
+        font-size: 1.4rem;
+        color: white;
+    }
 }
