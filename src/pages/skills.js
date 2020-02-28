@@ -3,7 +3,9 @@ import {skills, areas} from '../data/skills-info'
 import styled from "styled-components";
 
 import Carousel from "react-multi-carousel";
-import styles from "react-multi-carousel/lib/styles.css";
+import "react-multi-carousel/lib/styles.css";
+
+import Paper from '@material-ui/core/Paper'
 
 import './skills.css'
 
@@ -34,16 +36,19 @@ const responsive = {
         breakpoint: { max: 3000, min: 1024 },
         items: 5,
         paritialVisibilityGutter: 0,
+        offset: 8,
     },
     tablet: {
         breakpoint: { max: 1024, min: 550 },
         items: 3,
-        paritialVisibilityGutter: 0
+        paritialVisibilityGutter: 0,
+        offset: 5,
     },
     mobile: {
         breakpoint: { max: 550, min: 0 },
         items: 1,
         paritialVisibilityGutter: 0,
+        offset: 2
     }
 };
 
@@ -93,26 +98,6 @@ class SkillsPage extends React.Component
                 this.skillAreas[area].push(key);
             });
         });
-
-        this.indexOffset = 0;
-
-        this.bindSlideWithSkill = this.bindSlideWithSkill.bind(this);
-    }
-
-    bindSlideWithSkill() {
-
-        if (!this.Carousel || this.indexOffset !== 0)  {
-            return;
-        }
-
-        const children = this.Carousel.listRef.current.children;
-
-        if (children.length === 0) {
-            setTimeout(() => this.bindSlideWithSkill(), 10);
-            return;
-        }
-
-        this.indexOffset = (children.length - Object.keys(skills).length) / 2;
     }
 
     render() {
@@ -122,11 +107,11 @@ class SkillsPage extends React.Component
         return (<SkillCard className={key.split(' ').join('-')} img={img} key={index} name={key}/>);
         });
 
-        const showDots = () => { return this.Carousel ? this.Carousel.state.deviceType !== "mobile" : true; }
+        const showDots = () => { return false; }
 
         const getSkills = (area) => this.skillAreas[area].map((skill, index) => {
-            const generalIndex = skills[skill].index;
-            return <img onClick={()=>{ this.Carousel.goToSlide(this.indexOffset+generalIndex-2);}}
+            const generalIndex = skills[skill].index + (this.Carousel ? responsive[this.Carousel.state.deviceType].offset : 0);
+            return <img onClick={()=>{ this.Carousel.goToSlide(generalIndex);}}
                         key={index} src={skills[skill].img} alt=''/>
         });
 
@@ -172,7 +157,6 @@ class SkillsPage extends React.Component
                 autoPlay={this.state.firstIndex !== 1 ? true : false}
                 autoPlaySpeed={this.state.firstIndex === 0 ? 100 : 4000}
                 afterChange={(prev, state) => {
-                    console.log(state.currentSlide);
                     if (this.state.firstIndex !== 2) this.setState({firstIndex:1}, () => {this.setState({firstIndex: 2})});
                     const {currentSlide} = state;
                     let next = 2 - (state.slidesToShow === 1 ? 1 : state.slidesToShow === 5 ? -1 : 0);
@@ -191,7 +175,7 @@ class SkillsPage extends React.Component
                     this.setState({currentIndex:currentSlide+next});
                 }}       
                 responsive={responsive}
-                ref={(el) => { this.Carousel = el; this.bindSlideWithSkill(); }}
+                ref={(el) => { this.Carousel = el; }}
                 >
               {Skills}
             </Carousel>

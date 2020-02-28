@@ -34,7 +34,7 @@ export const skills = {
     },
     "Node.js" : {
         img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png",
-        tags: ["frontend", "backend"]
+        tags: ["backend"]
     },
      "Qt": {
         img: "https://www.stickpng.com/assets/images/58481514cef1014c0b5e4964.png",
@@ -119,7 +119,26 @@ export const skills = {
     "DirectX" : {
         img: "https://i.pinimg.com/originals/33/c2/17/33c217769e64a4ad38331386cd06999a.png",
     	tags: ["gamedev"],
-	},
+    },
+    /* Soft Skills */
+    // "Team Player": {
+
+    // },
+    // "Creative": {
+
+    // },
+    // "Proactive": {
+
+    // }, 
+    // "Self Taught": {
+
+    // },
+    // "Positive": {
+
+    // },
+    // "Planner": {
+
+    // }
 }
 
 export const areas = {

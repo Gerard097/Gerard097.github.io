@@ -13,7 +13,7 @@
     perspective: 500px;
     overflow: visible;
     margin-top: 7rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 /*ul item from carousel*/
@@ -56,7 +56,7 @@
 }
 
 .react-multi-carousel-dot-list {
-    bottom: -1rem;
+    bottom: -0.75rem;
 }
 
 /*
@@ -102,9 +102,13 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    margin: 0.5rem;
+    margin: 0.5rem 1.25rem;
+    background-color: #927fbf;
+    border-radius: 20px;
+    min-width: 250px;
+    flex:1;
 }
 
 .skill-area-container > div {
@@ -121,8 +125,11 @@
 }
 
 .skill-area-container > div > img {
-    width: 3.5rem;
-    height: 3.5rem;
+    max-width: 4rem;
+    max-height: 4rem;
+    width: auto;
+    height: auto;
+    display: block;
     margin: 0.5rem;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
@@ -135,23 +142,28 @@
 
 @media (min-width: 550px){
     .skill-area-container {
-        width: calc(50% - 1rem);
+        width: calc(50% - 2.5rem);
     }
 }
 
 @media (min-width: 1340px){
     .skill-area-container > div > img {
-        max-width: 4rem;
-        max-height: 4rem;
-        width: auto;
-        height: auto;
-        display: block;
-        margin: 0.7rem;
+        max-width: 3.65rem;
+        max-height: 3.65rem;
+        margin: 0.6rem;
     }
 
     .skill-area-container > p {
         font-family: "Consolas";
         font-size: 1.4rem;
         color: white;
+    }
+}
+
+@media (min-width: 1450px){
+    .skill-area-container > div > img {
+        max-width: 3.70rem;
+        max-height: 3.70rem;
+        margin: 0.4rem 0.6rem;
     }
 }
