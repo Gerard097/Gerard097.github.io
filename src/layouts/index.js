@@ -17,9 +17,32 @@ const Header = styled.header`
 const Footer = styled.footer`
     color: ${Palette.primaryColor};
     font-size: 1rem;
-    margin: 1rem 1rem 1rem 1rem;
+    margin: 1rem 1rem 0.5rem 1rem;
     font-family: consolas;
     user-select: none;
+    display: flex;
+    justify-content: flex-around;
+    flex-wrap: wrap;
+`
+
+const Attribution = styled.div`
+    flex: 1.5;
+    text-align: right;
+    padding-left: 1rem;
+    & > a {
+      color: ${Palette.primaryColor}
+    }
+`
+const Badge = styled.a`
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    margin-left: 1.5rem;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+    }
 `
 
 const Main = styled.main`
@@ -210,7 +233,29 @@ class Layout extends React.Component
                 </Main>
             </Transition>
             <Footer>
-                Gerardo Hernández {(new Date().getFullYear())}
+                <div style={{display: "flex", alignItems: "center", flex: "1", justifyContent:"space-between"}}>
+                  <div style={{whiteSpace:"nowrap"}}>© Gerardo Hernández {(new Date().getFullYear())}</div>
+                  <div style={{display:"flex"}}>
+                    <Badge href="https://www.linkedin.com/in/gerardo-perez-hernandez" target="_blank">
+                      <img src="https://image.flaticon.com/icons/svg/1409/1409945.svg" alt=""/>
+                    </Badge>
+                    <Badge href="https://stackoverflow.com/users/7908019/gerard097?tab=profile" target="_blank">
+                      <img src="https://image.flaticon.com/icons/svg/2111/2111628.svg" alt=""/>
+                    </Badge>
+                    <Badge href="https://github.com/Gerard097" target="_blank">
+                      <img src="https://image.flaticon.com/icons/svg/1051/1051275.svg" alt=""/>
+                    </Badge>
+                    <Badge href="https://www.hackerrank.com/Gerard0" target="_blank">
+                      <img src="https://user-images.githubusercontent.com/17762967/42728663-26ebdb04-87dd-11e8-928f-fb01479a2ce1.png" alt=""/>
+                    </Badge>
+                  </div>
+                </div>
+                <Attribution>
+                  Icons designed by {" ["}
+                  <a href="https://www.flaticon.es/autores/freepik" title="Freepik">Freepik</a>{","}
+                  <a href="https://www.flaticon.es/autores/pixel-perfect" title="Pixel perfect">Pixel perfect</a>
+                  {"] "} from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es</a>
+                </Attribution>
             </Footer>
           </Body>
         )

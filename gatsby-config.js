@@ -23,5 +23,12 @@ module.exports = {
         component: require.resolve(`./src/layouts/index.js`),
       },
     },
+    // {
+    //   resolve: "gatsby-source-filesystem",
+    //   options: {
+    //     name: "fonts",
+    //     path: `${__dirname}/src/fonts/`
+    //   }
+    // }
   ],
 }

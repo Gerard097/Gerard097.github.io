@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Concert+One&display=swap");
+
 .root-container {
     width: 100%;
     display: flex;
@@ -34,21 +36,22 @@
 }
 
 .slide-inner {
-    /* width: 100%; */
-    /* height: 80%; */
-    transform: scale(0.6) translateY(0);
+    width: 100%;
+    height: 50%;
+    transform: translateY(0);
     /* overflow: visible; */
     justify-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: transform 0.5s ease-in-out;
-    margin-top: 3rem;
 }
 
 .slide-img {
-    width: 50%;
-    height: auto;
+    /* width: 50%; */
+    /* height: auto; */
+    width: auto;
+    height: 40%;
     user-select: none;
     -webkit-user-drag: none;
     /* width: 100px;
@@ -68,7 +71,12 @@
     width: 100%;
 }
 
+.slide-hide-info {
+    opacity: 0;
+}
+
 .slide-card-top {
+    font-family: Concert One;
     font-size: 1.5rem;
     color: white;
     user-select: none;
@@ -116,11 +124,12 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .skill-area-container > p {
-    font-family: "Consolas";
-    font-size: 1.2rem;
+    font-family: Concert One;
+    font-size: 1.3em;
     color: white;
 }
 
@@ -154,9 +163,7 @@
     }
 
     .skill-area-container > p {
-        font-family: "Consolas";
         font-size: 1.4rem;
-        color: white;
     }
 }
 
