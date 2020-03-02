@@ -151,8 +151,12 @@ class SkillsPage extends React.Component
 
         const getSkills = (area) => this.skillAreas[area].map((skill, index) => {
             const generalIndex = skills[skill].index + (this.Carousel ? responsive[this.Carousel.state.deviceType].offset : 0);
-            return <img onClick={()=>{ this.Carousel.goToSlide(generalIndex);}}
-                        key={index} src={skills[skill].img} alt=''/>
+            return <img onClick={() => { 
+                            if (this.Carousel.state.currentSlide !== generalIndex) this.Carousel.goToSlide(generalIndex);
+                        }}
+                        key={index} 
+                        src={skills[skill].img} 
+                        alt=''/>
         });
 
         return (
@@ -200,8 +204,8 @@ class SkillsPage extends React.Component
                 itemClass="slide-imp"
                 sliderClass="slider-container-imp"
                 infinite
-                autoPlay={false && this.state.firstIndex !== 1 ? true : false}
-                autoPlaySpeed={this.state.firstIndex === 0 ? 100 : 4000}
+                autoPlay={this.state.firstIndex !== 1 ? true : false}
+                autoPlaySpeed={this.state.firstIndex === 0 ? 100 : 4500}
                 afterChange={(prev, state) => {
                     if (this.state.firstIndex !== 2) this.setState({firstIndex:1}, () => {this.setState({firstIndex: 2})});
                     const {currentSlide} = state;
