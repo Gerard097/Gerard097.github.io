@@ -3,9 +3,14 @@ import {skills} from '../data/skills-info'
 import styled from "styled-components";
 import {Rating} from '@material-ui/lab'
 import Carousel from "react-multi-carousel";
+import { LinearProgress } from "@material-ui/core";
 import "react-multi-carousel/lib/styles.css";
 
 import './skills.css'
+
+const BarRating = styled(LinearProgress)`
+    
+`
 
 const SkillTarget = styled.div`
     .slide-imp:nth-child(${props => props.index}) > div {
@@ -120,6 +125,7 @@ class SkillsPage extends React.Component
         firstIndex: 0,
         autoPlay: false,
         autoPlaySpeed: 4500,
+        nextRate: 1
     }
 
     constructor(props) {
@@ -157,8 +163,11 @@ class SkillsPage extends React.Component
         const showDots = () => { return false; }
 
         const getSkills = (area) => this.skillAreas[area].map((skill, index) => {
+            
             const generalIndex = skills[skill].index + (this.Carousel ? responsive[this.Carousel.state.deviceType].offset : 0);
-            return <img onClick={() => { 
+            return (<div key={index}>
+                    <img 
+                        onClick={() => { 
                             if (this.Carousel.state.currentSlide !== generalIndex) {
                                 //Used to avoid inmediate changing to following skill after clicking on this
                                 const offsetClick = responsive[this.Carousel.state.deviceType].offsetClick;
@@ -166,9 +175,12 @@ class SkillsPage extends React.Component
                                 this.Carousel.goToSlide(generalIndex, true);
                             }
                         }}
-                        key={index} 
+                         
                         src={skills[skill].img} 
                         alt=''/>
+                    <BarRating variant="determinate" value={this.state.nextRate === 0 ? 0 : skills[skill].rate / 5 * 100} color="secondary"/>
+                    </div>
+            )
         });
         console.log(this.areaCarousel ? this.areaCarousel.state.currentSlide : null);
         return (
@@ -176,6 +188,10 @@ class SkillsPage extends React.Component
             index={this.state.currentIndex}
             className="root-container">
             <Carousel
+                swipeable={false}
+                draggable={false}
+                afterChange={() => { this.setState({nextRate:1}); }}
+                beforeChange={() => { this.setState({nextRate:0}); }}
                 ref={r => this.areaCarousel = r}
                 responsive={{
                     mobile: { 

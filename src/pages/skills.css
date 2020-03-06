@@ -101,7 +101,7 @@
 /*Skills areas*/
 
 .react-multiple-carousel__arrow {
-    bottom: 1rem;
+    top: 1rem;
     background: none;
 }
 
@@ -148,7 +148,20 @@
     color: white;
 }
 
-.skill-area-container > div > img {
+.skill-area-container > div > div {
+    width: 5rem;
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.skill-area-container > div > div > .MuiLinearProgress-root {
+    width: 75%;
+}
+
+.skill-area-container > div > div > img {
     max-width: 4rem;
     max-height: 4rem;
     width: auto;
@@ -160,7 +173,7 @@
     transform: scale(1);
 }
 
-.skill-area-container > div > img:hover {
+.skill-area-container > div > div > img:hover {
     transform: scale(1.1);
 }
 
