@@ -243,7 +243,7 @@ class IndexPage extends React.Component
                     else {
                         //console.log("Showcase");
                         //Time Showcasing
-                        stepDuration = 4000;
+                        stepDuration = 2500;
                         this.setState({stateIndex : stepStates["showcase"]});
                         this.targetDifference = 0;
                     }
