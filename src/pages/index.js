@@ -75,7 +75,7 @@ const NextRandomChar = size => {
 
 const titles = ["Gamer", "Software Engineer", "Web Developer", "Game Developer", "Dreamer", "Wizard", "Coder", "Traveler", "C++ Nerd", "Team Player"];
 
-let indices = [1];
+let indices = [];
 
 const stepStates = {"target" : 0, "reveal" : 1, "showcase" : 2};
 

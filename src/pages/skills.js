@@ -78,18 +78,21 @@ const responsive = {
         items: 5,
         paritialVisibilityGutter: 0,
         offset: 8,
+        offsetClick: 3
     },
     tablet: {
         breakpoint: { max: 1230, min: 600 },
         items: 3,
         paritialVisibilityGutter: 0,
         offset: 5,
+        offsetClick: 2
     },
     mobile: {
         breakpoint: { max: 600, min: 0 },
         items: 1,
         paritialVisibilityGutter: 0,
-        offset: 2
+        offset: 2,
+        offsetClick: 1
     }
 };
 
@@ -114,12 +117,16 @@ class SkillsPage extends React.Component
 
     state = {
         currentIndex: 8,
-        firstIndex: 0
+        firstIndex: 0,
+        autoPlay: false,
+        autoPlaySpeed: 4500,
     }
 
     constructor(props) {
         
         super(props);
+
+        //this.enableBefore = true;
 
         this.skillAreas = {};
 
@@ -152,7 +159,12 @@ class SkillsPage extends React.Component
         const getSkills = (area) => this.skillAreas[area].map((skill, index) => {
             const generalIndex = skills[skill].index + (this.Carousel ? responsive[this.Carousel.state.deviceType].offset : 0);
             return <img onClick={() => { 
-                            if (this.Carousel.state.currentSlide !== generalIndex) this.Carousel.goToSlide(generalIndex);
+                            if (this.Carousel.state.currentSlide !== generalIndex) {
+                                //Used to avoid inmediate changing to following skill after clicking on this
+                                const offsetClick = responsive[this.Carousel.state.deviceType].offsetClick;
+                                this.setState({autoPlay: false, currentIndex: generalIndex+offsetClick}, ()=>setTimeout(this.setState({autoPlay:true}), 50));
+                                this.Carousel.goToSlide(generalIndex, true);
+                            }
                         }}
                         key={index} 
                         src={skills[skill].img} 
@@ -196,26 +208,30 @@ class SkillsPage extends React.Component
                 </div>
             </div>
             <Carousel
+                swipeable={false}
+                draggable={false}
                 showDots={showDots()}
                 // focusOnSelect
                 arrows={false}
+                onDrag={()=>console.log("Moving")}
                 slidesToSlide={1}
                 containerClass="container-imp"
                 itemClass="slide-imp"
                 sliderClass="slider-container-imp"
                 infinite
-                autoPlay={this.state.firstIndex !== 1 ? true : false}
-                autoPlaySpeed={this.state.firstIndex === 0 ? 100 : 4500}
+                autoPlay={/*this.state.firstIndex !== 1 ? true : false*/this.state.autoPlay}
+                autoPlaySpeed={/*this.state.firstIndex === 0 ? 100 : */this.state.autoPlaySpeed}
                 afterChange={(prev, state) => {
+                    
                     if (this.state.firstIndex !== 2) this.setState({firstIndex:1}, () => {this.setState({firstIndex: 2})});
                     const {currentSlide} = state;
                     let next = 2 - (state.slidesToShow === 1 ? 1 : state.slidesToShow === 5 ? -1 : 0);
                     if (state.currentSlide + next !== this.state.currentIndex) {
                         this.setState({currentIndex: currentSlide+next});
                     }
-                    
                 }}
                 beforeChange={(prev, state) => {
+                    
                     const {currentSlide} = state;
                     let next = 3 - (state.slidesToShow === 1 ? 1 : state.slidesToShow === 5 ? -1 : 0);
                     //Back
@@ -223,9 +239,15 @@ class SkillsPage extends React.Component
                         next = 1 - (state.slidesToShow === 1 ? 1 : state.slidesToShow === 5 ? -1 : 0);
                     }
                     this.setState({currentIndex:currentSlide+next});
+                    
                 }}       
                 responsive={responsive}
-                ref={(el) => { this.Carousel = el; }}
+                ref={(el) => { 
+                    this.Carousel = el;
+                    if (this.state.autoPlay === false && this.Carousel) {
+                        setTimeout(()=>{ this.Carousel.goToSlide(0); this.setState({autoPlay:true}) }, 50);
+                    }
+                }}
                 >
               {Skills}
             </Carousel>

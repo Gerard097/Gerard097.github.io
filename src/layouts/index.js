@@ -250,12 +250,13 @@ class Layout extends React.Component
                     </Badge>
                   </div>
                 </div>
+                {location.pathname === "/skills" ?
                 <Attribution>
                   Icons designed by {" ["}
                   <a href="https://www.flaticon.es/autores/freepik" title="Freepik">Freepik</a>{","}
                   <a href="https://www.flaticon.es/autores/pixel-perfect" title="Pixel perfect">Pixel perfect</a>
                   {"] "} from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es</a>
-                </Attribution>
+                </Attribution> : null}
             </Footer>
           </Body>
         )

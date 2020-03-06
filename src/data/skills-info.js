@@ -19,13 +19,13 @@ export const skills = {
         //category: "Programming Language",
         category: "Programming Language",
         tags: ["frontend", "backend"],
-    	rate: 3.5,
+    	rate: 4,
 	},
     "HTML 5" : {
         img: "https://image.flaticon.com/icons/png/512/1216/1216733.png",
         category: "Markup Language",
         tags: ["frontend"],
-    	rate: 4,
+    	rate: 4.5,
 	},
     "CSS 3" : {
         img: "https://www.logolynx.com/images/logolynx/s_3b/3b9d42a73e06ccac04deb9073e5235ba.png",
@@ -36,12 +36,12 @@ export const skills = {
     "Gatsby" : {
         img: "https://www.gatsbyjs.org/static/gatsby-icon-4a9773549091c227cd2eb82ccd9c5e3a.png",
         tags: ["frontend"],
-    	rate: 3,
+    	rate: 4,
 	},
     "Node.js" : {
         img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png",
         tags: ["backend"],
-    	rate: 3,
+    	rate: 3.5,
 	},
      "Qt": {
         img: "https://www.stickpng.com/assets/images/58481514cef1014c0b5e4964.png",
@@ -51,7 +51,7 @@ export const skills = {
     "Python" : {
         img: "https://cdn.freebiesupply.com/logos/large/2x/python-5-logo-png-transparent.png",
         tags: ["backend"],
-    	rate: 3.5,
+    	rate: 4,
 	},
      "SFML 2": {
         img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/SFML_Logo.svg/1200px-SFML_Logo.svg.png",
@@ -66,7 +66,7 @@ export const skills = {
     "Godot" : {
         img: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg",
         tags: ["gamedev"],
-    	rate: 3,
+    	rate: 3.5,
 	},
     "Unity" : {
         img: "https://i.ya-webdesign.com/images/unity-logo-white-png.png",
@@ -81,17 +81,17 @@ export const skills = {
      "Unreal Engine 4" : {
         img: "https://www.richlandcollege.edu/cd/credit/gaming/rlc/student-resources/PublishingImages/UnrealEngine-269x300.png",
     	tags: ["gamedev"],
-    	rate: 3,
+    	rate: 4,
 	},
     "Flask" : {
         img: "https://www.kindpng.com/picc/m/188-1882416_flask-python-logo-hd-png-download.png",
     	tags: ["backend"],
-		rate: 3,
+		rate: 3.5,
 	},
     "Boost" : {
         img: "https://theboostcpplibraries.com/static/main/img/boost-logo.svg",
     	tags: ["backend"],
-		rate: 3,
+		rate: 3.5,
 	},
     "MySql" : {
         img: "https://anthoncode.com/wp-content/uploads/2019/01/mysql-logo-png.png",
@@ -111,84 +111,99 @@ export const skills = {
     "Qt Creator": {
         img: "https://i1.wp.com/emenda.com/wp-content/uploads/2018/01/qt-creator-logo.png?fit=256%2C256&ssl=1",
         tags: ["tools"],
-    	rate: 3,
+    	rate: 4.5,
 	},
     "Github" : {
         img: "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
     	tags: ["tools"],
-		rate: 3,
+		rate: 4,
 	},
     "Git" : {
         img: "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png",
     	tags: ["tools"],
-		rate: 3,
+		rate: 4,
 	},
     "Perforce" : {
         img: "https://img.informer.com/icons_mac/png/128/437/437456.png",
     	tags: ["tools"],
-		rate: 3,
+		rate: 4,
 	},
     "Toad" : {
         img: "https://upload.wikimedia.org/wikipedia/commons/e/ed/Toad-Original_RGB.png",
     	tags: ["tools"],
-		rate: 3,
+		rate: 4,
 	},
+    "VMware" : {
+        img: "https://www.muycomputerpro.com/wp-content/uploads/2015/02/vmware-logo.png",
+    	tags: ["tools"],
+		rate: 3.5,
+	},
+    "Linux" : {
+        img: "https://image.flaticon.com/icons/svg/226/226772.svg",
+    	tags: ["tools"],
+		rate: 3.5,
+    },
+    "Windows" : {
+        img: "https://image.flaticon.com/icons/svg/888/888882.svg",
+    	tags: ["tools"],
+		rate: 4,
+    },
     "SQL" : {
         img: "https://alexbruga.files.wordpress.com/2015/12/sql-logo.png?w=640",
     	tags: ["backend"],
-		rate: 3,
+		rate: 4,
 	},
     "OpenGL" : {
         img: "https://upload.wikimedia.org/wikipedia/en/f/fb/OpenGL_logo_%28Nov14%29.svg",
     	tags: ["gamedev"],
-		rate: 3,
+		rate: 4,
 	},
     "DirectX" : {
         img: "https://www.syncfusion.com/blogs/wp-content/uploads/2018/08/directx_89859d36.png",
     	tags: ["gamedev"],
-    	rate: 3,
+    	rate: 4,
 	},
     /* Soft Skills */
     "Team Player": {
         img: "https://image.flaticon.com/icons/svg/476/476715.svg",
         tags:["softskills"],
-    	rate: 3,
+    	rate: 5,
 	},
     "Creative": {
         img: "https://image.flaticon.com/icons/svg/401/401645.svg",
         tags:["softskills"],
-    	rate: 3,
+    	rate: 4,
 	},
     "Proactive": {
         img: "https://image.flaticon.com/icons/svg/942/942781.svg",
         tags:["softskills"],
-    	rate: 3,
+    	rate: 4.5,
 	}, 
     "Self Taught": {
         img: "https://image.flaticon.com/icons/svg/567/567026.svg",
         tags:["softskills"],
-    	rate: 3,
+    	rate: 5,
 	},
     "Positive": {
         img: "https://image.flaticon.com/icons/svg/2598/2598784.svg",
         tags:["softskills"],
-    	rate: 3,
+    	rate: 5,
 	},
     "Planner": {
         img: "https://image.flaticon.com/icons/svg/681/681611.svg",
         tags:["softskills"],
 
-    	rate: 3,
+    	rate: 4.5,
 	},
     "Clear Communication": {
         img: "https://image.flaticon.com/icons/svg/942/942745.svg",
         tags:["softskills"],
-    	rate: 3,
+    	rate: 4.5,
 	},
     "Time Managment": {
         img: "https://image.flaticon.com/icons/svg/2618/2618051.svg",
         tags:["softskills"],
-    	rate: 3,
+    	rate: 4.5,
 	},
 }
 
