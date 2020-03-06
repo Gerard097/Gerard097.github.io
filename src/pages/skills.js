@@ -170,12 +170,26 @@ class SkillsPage extends React.Component
                         src={skills[skill].img} 
                         alt=''/>
         });
-
+        console.log(this.areaCarousel ? this.areaCarousel.state.currentSlide : null);
         return (
           <SkillTarget
             index={this.state.currentIndex}
             className="root-container">
-            <div className="skill-area-root">
+            <Carousel
+                ref={r => this.areaCarousel = r}
+                responsive={{
+                    mobile: { 
+                        breakpoint: { max: 3000, min: 0 },
+                        items: 1,
+                    }
+                }}
+                // additionalTransfrom={-250 + this.areaCarousel ? -this.areaCarousel.state.currentSlide*50 : 0}
+                infinite
+                itemClass="skill-area-item"
+                containerClass="skill-area-root"
+                showDots={false}
+                autoPlay={false}
+            >
                 <div className="skill-area-container">
                     <p>Frontend</p>
                     <div>
@@ -206,7 +220,9 @@ class SkillsPage extends React.Component
                         {getSkills("softskills")}
                     </div>
                 </div>
-            </div>
+            </Carousel>
+            {/* <div className="skill-area-root">
+            </div> */}
             <Carousel
                 swipeable={false}
                 draggable={false}
