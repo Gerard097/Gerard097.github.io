@@ -73,7 +73,7 @@ const NextRandomChar = size => {
     return chars.substr(idx, size);
 }
 
-const titles = ["Gamer", "Software Engineer", "Web Developer", "Game Developer", "Dreamer", "Wizard", "Coder", "Traveler", "C++ Nerd", "Team Player"];
+const titles = ["Gamer", "Software Engineer", "Web Developer", "Game Developer", "Dreamer", "Wizard", "Coder", "Traveler", "C++ Nerd", "Team Player", "Entrepreneur", "Investor"];
 
 let indices = [];
 

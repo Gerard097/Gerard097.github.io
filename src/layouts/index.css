@@ -1,0 +1,31 @@
+.footer-container {
+    flex-direction: column;
+}
+
+.attribution-container {
+    text-align: center !important;
+}
+
+.footer-container > div {
+    padding: 5px;
+}
+
+html {
+    overflow-y: hidden;
+}
+
+.gatsby-focus-wrapper {
+    
+}
+
+@media (min-width: 450px){
+    .footer-container {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 603px) {
+    .attribution-container {
+        text-align: right !important;
+    }
+}

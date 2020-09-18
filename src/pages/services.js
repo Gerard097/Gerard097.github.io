@@ -1,17 +1,17 @@
-import React from "react"
-//import styled from "styled-components"
-import Button from '@material-ui/core/Button';
+import React, { Fragment } from "react"
 
+import styled from "styled-components";
 
-//import Layout from "../components/layout"
+const Container = styled.div`
+`
 
 class ServicesPage extends React.Component 
 {
     render() {
         return (
-        <Button variant="contained" color="secondary">
-            Services :D
-        </Button>
+        <Container>
+            
+        </Container>
         )
     }
 }

@@ -1,0 +1,8 @@
+@font-face {
+  font-family: neon;
+  src: url(./../fonts/hellodenverdisplayregular_v1.6.ttf);
+}
+
+.glow-text {
+  font-family: neon;
+}

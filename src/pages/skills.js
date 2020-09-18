@@ -182,7 +182,9 @@ class SkillsPage extends React.Component
                     </div>
             )
         });
-        console.log(this.areaCarousel ? this.areaCarousel.state.currentSlide : null);
+        
+        //console.log(this.areaCarousel ? this.areaCarousel.state.currentSlide : null);
+
         return (
           <SkillTarget
             index={this.state.currentIndex}

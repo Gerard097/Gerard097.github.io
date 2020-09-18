@@ -7,7 +7,7 @@ import ResposiveMenu from '../components/responsivemenu'
 import Palette from '../styles/palette'
 import Transition from '../components/transition'
 //import PageTransition from 'gatsby-plugin-page-transitions'
-
+import './index.css'
 import 'typeface-roboto';
 
 const Header = styled.header`
@@ -233,7 +233,7 @@ class Layout extends React.Component
                 </Main>
             </Transition>
             <Footer>
-                <div style={{display: "flex", alignItems: "center", flex: "1", justifyContent:"space-between"}}>
+                <div className='footer-container' style={{display: "flex", alignItems: "center", flex: "1", justifyContent:"space-between"}}>
                   <div style={{whiteSpace:"nowrap"}}>© Gerardo Hernández {(new Date().getFullYear())}</div>
                   <div style={{display:"flex"}}>
                     <Badge href="https://www.linkedin.com/in/gerardo-perez-hernandez" target="_blank">
@@ -251,7 +251,7 @@ class Layout extends React.Component
                   </div>
                 </div>
                 {location.pathname === "/skills" ?
-                <Attribution>
+                <Attribution className='attribution-container'>
                   Icons designed by {" ["}
                   <a href="https://www.flaticon.es/autores/freepik" title="Freepik">Freepik</a>{","}
                   <a href="https://www.flaticon.es/autores/pixel-perfect" title="Pixel perfect">Pixel perfect</a>

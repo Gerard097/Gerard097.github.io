@@ -1,19 +1,17 @@
 import React from "react"
-//import styled from "styled-components"
-import Button from '@material-ui/core/Button';
 
+import styled from "styled-components"
 
-//import Layout from "../index"
+const Container = styled.div`
+`
 
 class ContactPage extends React.Component 
 {
-
-
     render() {
         return (
-        <Button variant="contained" color="secondary">
-            Skills
-        </Button>
+        <Container>
+            Contact
+        </Container>
         )
     }
 }

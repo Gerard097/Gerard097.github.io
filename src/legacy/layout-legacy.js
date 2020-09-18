@@ -158,6 +158,7 @@ class Layout extends React.Component
             <GlobalStyle />
             <Header style={headerStyle}>
               <ResposiveMenu
+                
                 changeMenuOn="550px"
                 menu={
                   <NavBarContainer>
@@ -201,7 +202,7 @@ class Layout extends React.Component
                 {this.props.children}
             </Main>
             <Footer style={footerStyle}>
-                Gerardo Hernández {(new Date().getFullYear())}
+                {(new Date().getFullYear())}
             </Footer>
           </Body>
         )
