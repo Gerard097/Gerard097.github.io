@@ -1,48 +1,48 @@
 import React from 'react'
 import styled, {keyframes} from "styled-components";
 
-import Palette from '../styles/palette'
+//import Palette from '../styles/palette'
 
 import './common.css'
 
-const loadColor = "red";
+//const loadColor = "red";
 const neonColor = "red";
 
-const loadAnimation = keyframes`
+// const loadAnimation = keyframes`
 
-0% { 
-    border-top: 2px solid ${loadColor};
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-    border-left: 2px solid black;
-}
-25% {
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    border-right: 2px solid ${loadColor};
-    border-left: 2px solid black;
-}        
-50% {
-    border-top: 2px solid black;
-    border-bottom: 2px solid ${loadColor};
-    border-right: 2px solid black;
-    border-left: 2px solid black;
-}
-75% { 
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-    border-left: 2px solid ${loadColor};
-}
+// 0% { 
+//     border-top: 2px solid ${loadColor};
+//     border-bottom: 2px solid black;
+//     border-right: 2px solid black;
+//     border-left: 2px solid black;
+// }
+// 25% {
+//     border-top: 2px solid black;
+//     border-bottom: 2px solid black;
+//     border-right: 2px solid ${loadColor};
+//     border-left: 2px solid black;
+// }        
+// 50% {
+//     border-top: 2px solid black;
+//     border-bottom: 2px solid ${loadColor};
+//     border-right: 2px solid black;
+//     border-left: 2px solid black;
+// }
+// 75% { 
+//     border-top: 2px solid black;
+//     border-bottom: 2px solid black;
+//     border-right: 2px solid black;
+//     border-left: 2px solid ${loadColor};
+// }
 
-100% { 
-    border-top: 2px solid ${loadColor};
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-    border-left: 2px solid black;
-}
+// 100% { 
+//     border-top: 2px solid ${loadColor};
+//     border-bottom: 2px solid black;
+//     border-right: 2px solid black;
+//     border-left: 2px solid black;
+// }
 
-`
+// `
 
 const glowAnimation = keyframes`
     0% { 
@@ -89,7 +89,7 @@ const glowAnimation = keyframes`
     }
 `
 
-export const CommingSoon_ = styled.div`
+export const CommingSoonPriv = styled.div`
     font-size: 14rem;
     padding: 2rem;
     color: ${neonColor};
@@ -98,5 +98,5 @@ export const CommingSoon_ = styled.div`
     text-align: center;
 `
 export const CommingSoon = ({children}) => (
-    <CommingSoon_ className="glow-text">{children}</CommingSoon_>
+    <CommingSoonPriv className="glow-text">{children}</CommingSoonPriv>
 );

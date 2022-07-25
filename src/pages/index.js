@@ -5,6 +5,8 @@ import styled from "styled-components"
 import Typist from "react-typist";
 import Palette from '../styles/palette'
 
+
+// eslint-disable-next-line no-extend-native
 String.prototype.replaceAt = function(index, replacement) {
     return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 }
@@ -58,7 +60,7 @@ let randomSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!
 let chars = Shuffle(randomSet) + Shuffle(randomSet) + Shuffle(randomSet);
 let cIndex = 0;
 
-console.log(chars);
+//console.log(chars);
 
 const NextRandomChar = size => {
     let idx = cIndex;
@@ -73,7 +75,22 @@ const NextRandomChar = size => {
     return chars.substr(idx, size);
 }
 
-const titles = ["Gamer", "Software Engineer", "Web Developer", "Game Developer", "Dreamer", "Wizard", "Coder", "Traveler", "C++ Nerd", "Team Player", "Entrepreneur", "Investor"];
+const titles = [
+    "Gamer", 
+    "Software Engineer",
+    "Web Developer", 
+    "Game Developer", 
+    "Dreamer", 
+    "Wizard", 
+    "Coder", 
+    "Traveler", 
+    "C++ Nerd", 
+    "Team Player", 
+    "Entrepreneur", 
+    "Creator",
+    "Problem Solver"
+    // "Investor"
+];
 
 let indices = [];
 
@@ -110,7 +127,7 @@ class IndexPage extends React.Component
     }
 
     componentWillUnmount() {
-        console.log("Unmount")
+        //console.log("Unmount")
         this.mounted = false;
     }
 
@@ -274,9 +291,9 @@ class IndexPage extends React.Component
                 onTypingDone={() => this.selectTargetTitle()}
                 cursor={{show:true, hideWhenDone: true, hideWhenDoneDelay: 0}}
             >
-                Hi.
+                Hi,
                 <Typist.Delay ms={700}/> 
-                {` My name is Gerardo, `}
+                {` my name is Gerardo, `}
                 <Typist.Delay ms={350}/> 
                 {`and I'm a`}
             </STypist>

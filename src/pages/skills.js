@@ -3,18 +3,21 @@ import {skills} from '../data/skills-info'
 import styled from "styled-components";
 import {Rating} from '@material-ui/lab'
 import Carousel from "react-multi-carousel";
-import { LinearProgress } from "@material-ui/core";
+import { CircularProgress, Typography, Box } from "@material-ui/core";
+import Palette from '../styles/palette'
 import "react-multi-carousel/lib/styles.css";
 
 import './skills.css'
 
-const BarRating = styled(LinearProgress)`
+import frontendLogo from '../images/front.png';
+
+// const CircularProgressGlow = styled(CircularProgress)`
     
-`
+// `
 
 const SkillTarget = styled.div`
     .slide-imp:nth-child(${props => props.index}) > div {
-        transform: scale(1.2) translateY(-2.5rem);
+        transform: scale(1.1) translateY(-2rem);
     }
 
     .slide-imp:nth-child(${props => props.index}) > div > div.slide-card-top {
@@ -110,24 +113,97 @@ const SkillCard = ({className, name, img, rate, index, }) => (
             readOnly
             precision={0.5}
             max={5}
-            value={rate}/>
+            defaultValue={rate}/>
         <div className="slide-inner">
             <img className='slide-img' src={img} alt=''/>
         </div>
     </div>
 );
 
+const CircularProgressWithLabel = ({label, value, onClick}) => (
+    <Box
+        onClick={onClick}
+        style={{
+            cursor: 'pointer'
+        }}
+        sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-evenly !important',
+            alignItems: 'center',
+            transition: 'transform 500ms',
+            margin: 'auto',
+            '&:hover': {
+                transform: 'scale(1.15)',
+            }
+        }}
+    >
+        <Box
+            sx = {{
+                position:'relative',
+                display: 'inline-flex',
+                flexDirection: 'column'
+            }}
+        >
+            {/*Used to create a glow effect */}
+            <CircularProgress
+                style={{color: Palette.secondary}}
+                className="glow-circular-progress"
+                value={value} 
+                variant="determinate"/>
+            <CircularProgress 
+                style={{color: Palette.secondary}}
+                value={value} 
+                variant="determinate"/>
+            <Box
+                sx = {{
+                    top: 0,
+                    left: 0,
+                    bottom: 0,
+                    right: 0,
+                    position: 'absolute',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}
+            >
+                <Typography
+                    style={{
+                        userSelect: 'none',
+                        color: 'white' 
+                    }}
+                    variant="caption"
+                    component="p"
+                >
+                    {`${value}%`}
+                </Typography>
+            </Box>
+        </Box>
+        <Typography
+                    style={{ 
+                        color: 'white',
+                        textAlign: 'center',
+                        userSelect: 'none',
+                    }}
+                    variant="caption"
+                    component="p"
+        >
+            {label}
+        </Typography>
+    </Box>
+)
+
+const skillSets = [
+    { label: "Frontend", key: "frontend", icon: frontendLogo },
+    { label: "Backend", key: "backend" },
+    { label: "Game Development", key: "gamedev" },
+    { label: "Tools", key: "tools" },
+    { label: "Soft Skills", key: "softskills" },
+    //{ label: "Blockchain", key: "blockchain" },
+]
+
 class SkillsPage extends React.Component 
 {
-
-    state = {
-        currentIndex: 8,
-        firstIndex: 0,
-        autoPlay: false,
-        autoPlaySpeed: 4500,
-        nextRate: 1
-    }
-
     constructor(props) {
         
         super(props);
@@ -138,19 +214,43 @@ class SkillsPage extends React.Component
 
         this.skillRefs = []
 
-        Object.keys(skills).forEach((key, index) => {
+        let vals = {};
 
+        Object.values(skillSets).forEach(({key}) => {
+            vals[key] = false;
+            this.skillAreas[key] = [];
+        })
+
+        this.state = {
+            showPercentageValue: vals,
+            currentIndex: 8,
+            firstIndex: 0,
+            autoPlay: false,
+            autoPlaySpeed: 4500,
+            nextRate: 1
+        }
+
+        Object.keys(skills).forEach((key, index) => {
+            
             skills[key].index = index;
 
             const areas = skills[key].tags;
             
             areas.forEach((area) => { 
-                if (!this.skillAreas[area]) {
-                    this.skillAreas[area] = [];
-                }
                 this.skillAreas[area].push(key);
             });
         });
+    }
+
+    componentDidMount() {
+
+        let vals = this.state.showPercentageValue;
+
+        vals[skillSets[0].key] = true;
+
+        setTimeout(() => {
+            this.setState({ showPercentageValue: vals });
+        }, 500);
     }
 
     render() {
@@ -162,38 +262,52 @@ class SkillsPage extends React.Component
 
         const showDots = () => { return false; }
 
-        const getSkills = (area) => this.skillAreas[area].map((skill, index) => {
+        const getSkills = (area, showPercentageValue) => this.skillAreas[area].map((skill, index) => {
             
             const generalIndex = skills[skill].index + (this.Carousel ? responsive[this.Carousel.state.deviceType].offset : 0);
-            return (<div key={index}>
-                    <img 
-                        onClick={() => { 
-                            if (this.Carousel.state.currentSlide !== generalIndex) {
-                                //Used to avoid inmediate changing to following skill after clicking on this
-                                const offsetClick = responsive[this.Carousel.state.deviceType].offsetClick;
-                                this.setState({autoPlay: false, currentIndex: generalIndex+offsetClick}, ()=>setTimeout(this.setState({autoPlay:true}), 50));
-                                this.Carousel.goToSlide(generalIndex, true);
-                            }
-                        }}
-                         
-                        src={skills[skill].img} 
-                        alt=''/>
-                    <BarRating variant="determinate" value={this.state.nextRate === 0 ? 0 : skills[skill].rate / 5 * 100} color="secondary"/>
-                    </div>
-            )
+            return (
+            <CircularProgressWithLabel 
+                key={skill} 
+                label={skill} 
+                value={showPercentageValue ? Math.min(skills[skill].rate * 20, 99) : 0}
+                onClick={() => {
+                    if (this.Carousel.state.currentSlide !== generalIndex) {
+                        //Used to avoid inmediate changing to following skill after clicking on this
+                        const offsetClick = responsive[this.Carousel.state.deviceType].offsetClick;
+                        this.setState({autoPlay: false, currentIndex: generalIndex+offsetClick}, ()=>setTimeout(this.setState({autoPlay:true}), 50));
+                        this.Carousel.goToSlide(generalIndex, true);
+                    }
+                }}
+            />
+            );
         });
         
         //console.log(this.areaCarousel ? this.areaCarousel.state.currentSlide : null);
-
+        console.log(this.state.currentIndex);
         return (
           <SkillTarget
             index={this.state.currentIndex}
             className="root-container">
             <Carousel
-                swipeable={false}
-                draggable={false}
-                afterChange={() => { this.setState({nextRate:1}); }}
-                beforeChange={() => { this.setState({nextRate:0}); }}
+                slidesToSlide={1}
+                swipeable={true}
+                draggable={true}
+                afterChange={(prevSlide) => {
+                    this.setState({nextRate:1}); 
+                }}
+                beforeChange={(slide, state) => {
+                    //When using infine prop it will start at index 2
+                    //so we have to offset the slide by |skillSet| - 2
+                    const key = skillSets[(slide + skillSets.length - 2) % skillSets.length].key;
+                    const prevKey = skillSets[(state.currentSlide + 3) % skillSets.length].key;
+                    let vals = { ...this.state.showPercentageValue };
+                    setTimeout(() => {
+                        vals[key] = true;
+                        this.setState({showPercentageValue: vals});
+                    }, 500)
+                    vals[prevKey] = false;                 
+                    this.setState({nextRate: 0, showPercentageValue: vals}); 
+                }}
                 ref={r => this.areaCarousel = r}
                 responsive={{
                     mobile: { 
@@ -208,36 +322,31 @@ class SkillsPage extends React.Component
                 showDots={false}
                 autoPlay={false}
             >
-                <div className="skill-area-container">
-                    <p>Frontend</p>
-                    <div>
-                        {getSkills("frontend")}
+                {skillSets.map(({key, label, icon}) => (
+                    <div key={key} className="skill-area-container">
+                        <Box>
+                            <h2 style={{ userSelect: 'none' }} >{label}</h2>
+                            {
+                            icon &&
+                            <img
+                                height={45}
+                                src={icon}
+                                alt={label}
+                                style={{
+                                    marginLeft: 20,
+                                    userSelect: 'none' 
+                                }}
+                            />
+                            }       
+                        </Box>
+                        <div style={{
+                            marginTop: 20,
+                            justifyContent: 'space-evenly'
+                        }}>
+                            {getSkills(key, this.state.showPercentageValue[key])}
+                        </div>
                     </div>
-                </div>
-                <div className="skill-area-container">
-                    <p>Backend</p>
-                    <div>
-                        {getSkills("backend")}
-                    </div>
-                </div>
-                <div className="skill-area-container">
-                    <p>Game Development</p>
-                    <div>
-                        {getSkills("gamedev")}
-                    </div>
-                </div>
-                <div className="skill-area-container">
-                    <p>Tools</p>
-                    <div>
-                        {getSkills("tools")}
-                    </div>
-                </div>
-                <div className="skill-area-container">
-                    <p>Soft Skills</p>
-                    <div>
-                        {getSkills("softskills")}
-                    </div>
-                </div>
+                ))}
             </Carousel>
             {/* <div className="skill-area-root">
             </div> */}

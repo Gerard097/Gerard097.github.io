@@ -1,6 +1,16 @@
-import React from 'react'
+/*Soft Skills*/
+import timeManagement from '../images/skills/time-management.png'
+import creative from '../images/skills/creative.png'
+import teamPlayer from '../images/skills/team-player.png'
+import positive from '../images/skills/positive.png'
+import proactive from '../images/skills/proactive.png'
+import selfTaught from '../images/skills/self-taught.png'
+import communicate from '../images/skills/communicate.png'
+import planning from '../images/skills/planning.png'
 
-export const skills = {
+/*Technical Skills*/
+
+export let skills = {
     "React" : {
         img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/1200px-React.svg.png",
         category: "Javascript Library",
@@ -22,7 +32,7 @@ export const skills = {
     	rate: 4,
 	},
     "HTML 5" : {
-        img: "https://image.flaticon.com/icons/png/512/1216/1216733.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/logos%2Fhtml.png?alt=media&token=f2ecc088-f38c-4c80-add1-39c703545653",
         category: "Markup Language",
         tags: ["frontend"],
     	rate: 4.5,
@@ -34,7 +44,27 @@ export const skills = {
     	rate: 4,
 	},
     "Gatsby" : {
-        img: "https://www.gatsbyjs.org/static/gatsby-icon-4a9773549091c227cd2eb82ccd9c5e3a.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/logos%2Fgatsbyjs.png?alt=media&token=63590d34-dbb0-44b6-b94b-d43b76e5b7a4",
+        tags: ["frontend"],
+    	rate: 4,
+	},
+    "Vue.js" : {
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/vue-js.png?alt=media&token=ed1459b2-4cf6-4268-9a4a-a8fb22f74a13",
+        tags: ["frontend"],
+    	rate: 3.5,
+	},
+    "Express" : {
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/expressjs.png?alt=media&token=edbe7e8d-df42-44fd-bf31-d8c2136de55c",
+        tags: ["frontend"],
+    	rate: 3.5,
+	},
+    "Typescript" : {
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/typescript-programming-language.png?alt=media&token=ea61e8ca-a7c1-4724-b9f4-7b917ab54b24",
+        tags: ["frontend"],
+    	rate: 3.5,
+	},
+    "React Native" : {
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/react-native-app.png?alt=media&token=a3ae2e99-0c04-4f22-8dd2-844368eebe45",
         tags: ["frontend"],
     	rate: 4,
 	},
@@ -43,8 +73,18 @@ export const skills = {
         tags: ["backend"],
     	rate: 3.5,
     },
+    "Apollo Server" : {
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/apollo.png?alt=media&token=81935571-2e00-45c5-b0d2-d399c0bf6b8d",
+        tags: ["backend"],
+    	rate: 3.5,
+    },
+    "GraphQL" : {
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/graphql.png?alt=media&token=1a9fb86c-6eaf-471a-acea-89f1125e1448",
+        tags: ["backend", "frontend"],
+    	rate: 3.5,
+    },
     "Firebase": {
-        img: "https://www.gstatic.com/devrel-devsite/prod/vc0bb6d163e24d3b3e0961a17422a4975b4069aa6cfc1baff269f5aa415a63d55/firebase/images/touchicon-180.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/logos%2Fgoogle-firebase.png?alt=media&token=668ed18c-68c5-413c-85eb-9f62531f13fd",
         tags: ["backend"],
         rate: 3.5
     },
@@ -113,16 +153,21 @@ export const skills = {
     	tags: ["tools"],
     	rate: 4.5,
 	},
-    "Visual Studio Code" : {
-        img: "https://labarta.es/wp-content/uploads/2019/11/vscode-450x450.png",
-    	tags: ["tools"],
-    	rate: 4.5,
-	},
     "Qt Creator": {
         img: "https://upload.wikimedia.org/wikipedia/commons/f/fc/Qt_logo_2013.svg",
         tags: ["tools"],
     	rate: 4.5,
     },
+    "Visual Studio Code" : {
+        img: "https://labarta.es/wp-content/uploads/2019/11/vscode-450x450.png",
+        tags: ["tools"],
+        rate: 4.5,
+    },
+    "AWS" : {
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/logos%2Faws.png?alt=media&token=d17baf65-64f7-4ccb-8854-620f10490022",
+    	tags: ["tools"],
+		rate: 2.5,
+	},
     "Heroku": {
         img: "https://blog.desafiolatam.com/wp-content/uploads/2015/09/43sHKeth.png",
         tags: ["tools"],
@@ -140,6 +185,11 @@ export const skills = {
 	},
     "Ionic" : {
         img: "https://hackr.io/tutorials/learn-ionic/logo/logo-ionic?ver=1587978084",
+    	tags: ["tools"],
+		rate: 3.5,
+	},
+    "Expo" : {
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/logos%2Fexpo.png?alt=media&token=ea73d1e6-17e9-47c8-891b-8cb91bc1d3ec",
     	tags: ["tools"],
 		rate: 4,
 	},
@@ -159,12 +209,17 @@ export const skills = {
 		rate: 3.5,
 	},
     "Linux" : {
-        img: "https://image.flaticon.com/icons/svg/226/226772.svg",
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/logos%2Flinux.png?alt=media&token=f6388b1d-467e-4bb1-80ae-4980f044d94c",
     	tags: ["tools"],
 		rate: 3.5,
     },
     "Windows" : {
-        img: "https://image.flaticon.com/icons/svg/888/888882.svg",
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/logos%2Fwindows-10.png?alt=media&token=26341d83-62a8-4250-a335-5a429b14cb57",
+    	tags: ["tools"],
+		rate: 4,
+    },
+    "OSX" : {
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/logos%2Fapple.png?alt=media&token=478af399-9850-414f-a9a7-df4bb5b13d42",
     	tags: ["tools"],
 		rate: 4,
     },
@@ -174,7 +229,7 @@ export const skills = {
 		rate: 4,
 	},
     "OpenGL" : {
-        img: "https://upload.wikimedia.org/wikipedia/en/f/fb/OpenGL_logo_%28Nov14%29.svg",
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/logos%2Fopengl.png?alt=media&token=bd423c40-2d02-4e7f-ac69-c6bb76c3358e",
     	tags: ["gamedev"],
 		rate: 4,
 	},
@@ -185,43 +240,43 @@ export const skills = {
 	},
     /* Soft Skills */
     "Team Player": {
-        img: "https://image.flaticon.com/icons/svg/476/476715.svg",
+        img: teamPlayer,
         tags:["softskills"],
     	rate: 5,
 	},
     "Creative": {
-        img: "https://image.flaticon.com/icons/svg/401/401645.svg",
+        img: creative,
         tags:["softskills"],
     	rate: 4,
 	},
     "Proactive": {
-        img: "https://image.flaticon.com/icons/svg/942/942781.svg",
+        img: proactive,
         tags:["softskills"],
     	rate: 4.5,
 	}, 
     "Self Taught": {
-        img: "https://image.flaticon.com/icons/svg/567/567026.svg",
+        img: selfTaught,
         tags:["softskills"],
     	rate: 5,
 	},
+    "Time Managment": {
+        img: timeManagement,
+        tags:["softskills"],
+        rate: 4.5,
+    },
     "Positive": {
-        img: "https://image.flaticon.com/icons/svg/2598/2598784.svg",
+        img: positive,
         tags:["softskills"],
     	rate: 5,
 	},
     "Planner": {
-        img: "https://image.flaticon.com/icons/svg/681/681611.svg",
+        img: planning,
         tags:["softskills"],
 
     	rate: 4.5,
 	},
     "Clear Communication": {
-        img: "https://image.flaticon.com/icons/svg/942/942745.svg",
-        tags:["softskills"],
-    	rate: 4.5,
-	},
-    "Time Managment": {
-        img: "https://image.flaticon.com/icons/svg/2618/2618051.svg",
+        img: communicate,
         tags:["softskills"],
     	rate: 4.5,
 	},

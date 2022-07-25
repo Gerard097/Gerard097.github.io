@@ -18,6 +18,15 @@
     margin-bottom: 1rem;
 }
 
+.glow-circular-progress {
+    position: absolute;
+    
+}
+
+.glow-circular-progress > svg {
+    filter: blur(3px);
+}
+
 /*ul item from carousel*/
 .slider-container-imp {
     height: 100%;
@@ -28,8 +37,9 @@
 /*li item from ul list*/
 .slide-imp {
     /* transform: scale(0.75); */
+    align-self: flex-end;
     text-align: center;
-    height: 100%;
+    height: 60%;
     /* justify-content: center;
     align-items: center;
     display: flex; */
@@ -37,7 +47,7 @@
 
 .slide-inner {
     width: 100%;
-    height: 50%;
+    height: 30%;
     transform: translateY(0);
     /* overflow: visible; */
     justify-content: center;
@@ -51,7 +61,8 @@
     /* width: 50%; */
     /* height: auto; */
     width: auto;
-    height: 40%;
+    /* height: 40%; */
+    height: 100%;
     user-select: none;
     -webkit-user-drag: none;
     /* width: 100px;
@@ -76,8 +87,9 @@
 }
 
 .slide-card-top {
-    font-family: Concert One;
-    font-size: 1.5rem;
+    /* font-family: Concert One; */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
     color: white;
     user-select: none;
     opacity: 0;
@@ -109,7 +121,7 @@
     width: 80%;
     display: flex;
     flex-wrap: wrap;
-    background-color: #927fbf;
+    /*background-color: #927fbf;*/
     padding-bottom: 2rem;
 }
 
@@ -142,15 +154,16 @@
     width: 100%;
 }
 
-.skill-area-container > p {
-    font-family: Concert One;
-    font-size: 1.3em;
+.skill-area-container > * > h2 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5em;
     color: white;
 }
 
 .skill-area-container > div > div {
-    width: 5rem;
-    height: 6rem;
+    width: 4.5rem;
+    margin: 0.5rem 1rem;
+    height: 5rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;

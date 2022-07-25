@@ -10,6 +10,9 @@ import Transition from '../components/transition'
 import './index.css'
 import 'typeface-roboto';
 
+import { StaticImage } from 'gatsby-plugin-image'
+import { Box } from "@material-ui/core";
+
 const Header = styled.header`
     margin: 1rem 1rem 1rem 1rem;
 `
@@ -25,14 +28,15 @@ const Footer = styled.footer`
     flex-wrap: wrap;
 `
 
-const Attribution = styled.div`
-    flex: 1.5;
-    text-align: right;
-    padding-left: 1rem;
-    & > a {
-      color: ${Palette.primaryColor}
-    }
-`
+// const Attribution = styled.div`
+//     flex: 1.5;
+//     text-align: right;
+//     padding-left: 1rem;
+//     & > a {
+//       color: ${Palette.primaryColor}
+//     }
+// `
+
 const Badge = styled.a`
     width: 1.5rem;
     height: 1.5rem;
@@ -227,6 +231,18 @@ class Layout extends React.Component
                 }
               ></ResposiveMenu>
             </Header>
+            <Box
+            style={{
+              position: 'absolute',
+              left:0,
+              right:0,
+              top:0,
+              bottom:0,
+              backgroundColor: 'red',
+              zIndex: 0,
+              opacity: 0.1
+            }}>
+            </Box>
             <Transition location={location}>
                 <Main>
                     {this.props.children}
@@ -237,26 +253,26 @@ class Layout extends React.Component
                   <div style={{whiteSpace:"nowrap"}}>© Gerardo Hernández {(new Date().getFullYear())}</div>
                   <div style={{display:"flex"}}>
                     <Badge href="https://www.linkedin.com/in/gerardo-perez-hernandez" target="_blank">
-                      <img src="https://image.flaticon.com/icons/svg/1409/1409945.svg" alt=""/>
+                      <StaticImage src="../images/linkedin.png" alt="Github"/>
                     </Badge>
                     <Badge href="https://stackoverflow.com/users/7908019/gerard097?tab=profile" target="_blank">
-                      <img src="https://image.flaticon.com/icons/svg/2111/2111628.svg" alt=""/>
+                      <StaticImage src="../images/stackoverflow.png" alt="Stackoverflow"/>
                     </Badge>
-                    <Badge href="https://github.com/Gerard097" target="_blank">
-                      <img src="https://image.flaticon.com/icons/svg/1051/1051275.svg" alt=""/>
+                    <Badge href="https://github.com/Gerard097" target="_blank" style={{ backgroundColor: 'white', borderRadius: 20 }}>
+                      <StaticImage src="../images/github.png" alt="LinkedIn"/>
                     </Badge>
                     <Badge href="https://www.hackerrank.com/Gerard0" target="_blank">
                       <img src="https://user-images.githubusercontent.com/17762967/42728663-26ebdb04-87dd-11e8-928f-fb01479a2ce1.png" alt=""/>
                     </Badge>
                   </div>
                 </div>
-                {location.pathname === "/skills" ?
+                {/* {location.pathname === "/skills" ?
                 <Attribution className='attribution-container'>
                   Icons designed by {" ["}
                   <a href="https://www.flaticon.es/autores/freepik" title="Freepik">Freepik</a>{","}
                   <a href="https://www.flaticon.es/autores/pixel-perfect" title="Pixel perfect">Pixel perfect</a>
                   {"] "} from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es</a>
-                </Attribution> : null}
+                </Attribution> : null} */}
             </Footer>
           </Body>
         )
