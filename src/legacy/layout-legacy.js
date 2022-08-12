@@ -85,7 +85,7 @@ const NavBarContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  @media(max-width: 550px) {
+  @media(max-width: 660px) {
     flex-direction: column;
     align-items: center;
   }
@@ -101,7 +101,7 @@ const NavBarItem = styled.li`
   padding-right: 1.2rem;
   font-size: 1.5rem;
  
-  @media(max-width: 550px) {
+  @media(max-width: 660px) {
     padding-right: 0;
     display: block;
   }
@@ -123,7 +123,7 @@ const StyledLink = styled(Link)`
     background-color: #00000000;
     padding-bottom: 0.1rem;
 
-    @media(max-width: 550px) {
+    @media(max-width: 660px) {
     }
 `
 
@@ -159,7 +159,7 @@ class Layout extends React.Component
             <Header style={headerStyle}>
               <ResposiveMenu
                 
-                changeMenuOn="550px"
+                changeMenuOn="660px"
                 menu={
                   <NavBarContainer>
                     <HomeLogo

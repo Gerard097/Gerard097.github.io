@@ -11,7 +11,7 @@ import './index.css'
 import 'typeface-roboto';
 
 import { StaticImage } from 'gatsby-plugin-image'
-import { Box } from "@material-ui/core";
+//import { Box } from "@material-ui/core";
 
 const Header = styled.header`
     margin: 1rem 1rem 1rem 1rem;
@@ -118,7 +118,7 @@ const NavBarContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  @media(max-width: 550px) {
+  @media(max-width: 660px) {
     flex-direction: column;
     align-items: center;
   }
@@ -134,7 +134,7 @@ const NavBarItem = styled.li`
   padding-right: 1.2rem;
   font-size: 1.5rem;
  
-  @media(max-width: 550px) {
+  @media(max-width: 660px) {
     padding-right: 0;
     display: block;
   }
@@ -157,7 +157,7 @@ const StyledLink = styled(Link)`
     background-color: #00000000;
     padding-bottom: 0.1rem;
 
-    @media(max-width: 550px) {
+    @media(max-width: 660px) {
     }
 `
 
@@ -192,7 +192,7 @@ class Layout extends React.Component
             <GlobalStyle />
             <Header>
               <ResposiveMenu
-                changeMenuOn="550px"
+                changeMenuOn="660px"
                 menu={
                   <NavBarContainer>
                     <HomeLogo
@@ -211,6 +211,12 @@ class Layout extends React.Component
                         Skills
                       </NavLink>
                       <NavLink
+                        current={location.pathname === "/background" ? 1 : 0}
+                        to="/background"
+                      >
+                        Background
+                      </NavLink>
+                      {/* <NavLink
                         current={location.pathname === "/services" ? 1 : 0}
                         to="/services"
                       >
@@ -219,6 +225,10 @@ class Layout extends React.Component
                       <NavLink 
                         current={location.pathname === "/blog" ? 1 : 0} to="/blog">
                         Blog
+                      </NavLink> */}
+                      <NavLink 
+                        current={location.pathname === "/testing" ? 1 : 0} to="/testing">
+                        Test
                       </NavLink>
                       <NavLink
                         current={location.pathname === "/contact" ? 1 : 0}
@@ -231,7 +241,7 @@ class Layout extends React.Component
                 }
               ></ResposiveMenu>
             </Header>
-            <Box
+            {/* <Box
             style={{
               position: 'absolute',
               left:0,
@@ -242,7 +252,7 @@ class Layout extends React.Component
               zIndex: 0,
               opacity: 0.1
             }}>
-            </Box>
+            </Box> */}
             <Transition location={location}>
                 <Main>
                     {this.props.children}

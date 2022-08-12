@@ -54,8 +54,8 @@ export let skills = {
     	rate: 3.5,
 	},
     "Express" : {
-        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/expressjs.png?alt=media&token=edbe7e8d-df42-44fd-bf31-d8c2136de55c",
-        tags: ["frontend"],
+        img: "https://firebasestorage.googleapis.com/v0/b/personalweb-51d81.appspot.com/o/logos%2Fexpressjs.png?alt=media&token=2b1278e7-3a9c-4cea-87f7-61a1f60f344c",
+        tags: ["backend"],
     	rate: 3.5,
 	},
     "Typescript" : {

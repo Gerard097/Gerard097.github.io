@@ -1,10 +1,13 @@
-import React from "react"
+import React, { useRef } from "react"
 import styled from "styled-components"
 
 //import Layout from "../components/layout"
 import Typist from "react-typist";
 import Palette from '../styles/palette'
 
+import laptop from '../images/laptop.svg';
+import { Box } from "@material-ui/core";
+//import { StaticImage } from "gatsby-plugin-image";
 
 // eslint-disable-next-line no-extend-native
 String.prototype.replaceAt = function(index, replacement) {
@@ -12,18 +15,23 @@ String.prototype.replaceAt = function(index, replacement) {
 }
 
 const STypist = styled(Typist)`
-    color: ${Palette.secondary};
-    font-size: 2.8rem;
+    color: ${props => props.color ?? Palette.secondary};
     font-family: consolas;
     text-align: center;
     align-self: center;
     user-select: none;
     display: inline;
+
+    font-size: ${props => (props.fontSizeRem ?? 2)*1.25+'rem'};
+
+    @media(max-width: 800px) {
+        font-size: ${props => (props.fontSizeRem ?? 2)+'rem'};
+    }
 `
 
 const SSpan = styled.div`
     color: ${Palette.primaryVariant};
-    font-size: 2.8rem;
+    font-size: 2.1rem;
     font-family: consolas;
     text-align: center;
     align-self: center;
@@ -33,10 +41,34 @@ const SSpan = styled.div`
 `
 
 const TextCenterd = styled.div`
-    padding: 10rem 2rem;
+    margin-bottom: 3rem;
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin-top: 10rem;
+    
+    @media(max-height: 680px) {
+        margin-top: 5rem;
+    }
+
+    @media(max-width: 660px) {
+        margin-top: 5rem;
+        min-height: 5rem;
+    }
+`
+
+const MainContainer = styled(Box)`
+    display: flex;
+    //width: 100%;
+    height: 100%;
+    width: calc(100% - 3rem);
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    @media(max-width: 660px) {
+        justify-content: flex-start;
+    }
 `
 
 const ShuffleArray = a => {
@@ -78,7 +110,7 @@ const NextRandomChar = size => {
 const titles = [
     "Gamer", 
     "Software Engineer",
-    "Web Developer", 
+    "Fullstack Developer", 
     "Game Developer", 
     "Dreamer", 
     "Wizard", 
@@ -285,20 +317,67 @@ class IndexPage extends React.Component
     render() {
 
         return (
-        <TextCenterd>
-            <STypist
-                startDelay={1000}
-                onTypingDone={() => this.selectTargetTitle()}
-                cursor={{show:true, hideWhenDone: true, hideWhenDoneDelay: 0}}
+        <MainContainer style={{
+        }}>
+            <TextCenterd>
+                <STypist
+                    startDelay={1000}
+                    onTypingDone={() => this.selectTargetTitle()}
+                    cursor={{show:true, hideWhenDone: true, hideWhenDoneDelay: 0}}
+                >
+                    Hi,
+                    <Typist.Delay ms={700}/> 
+                    {` my name is Gerardo, `}
+                    <Typist.Delay ms={350}/> 
+                    {`and I'm a`}
+                </STypist>
+                <SSpan>{this.state.currentTitle}</SSpan>
+            </TextCenterd>
+            <Box
+                style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    padding: '0 2rem',
+                    maxWidth: '900px',
+                    width: '100%',
+                    alignSelf: 'center',
+                    marginBottom: '2rem'
+                }}    
             >
-                Hi,
-                <Typist.Delay ms={700}/> 
-                {` my name is Gerardo, `}
-                <Typist.Delay ms={350}/> 
-                {`and I'm a`}
-            </STypist>
-            <SSpan>{this.state.currentTitle}</SSpan>
-        </TextCenterd>
+                <Box
+                    style={{ flex: '0 0 60%' }}
+                >
+                {this.state.currentTitle.length >= 5 &&
+                <STypist
+                    color={Palette.primaryColor}
+                    avgTypingDelay={50}
+                    startDelay={2000}
+                    fontSizeRem={1.2}
+                    cursor={{
+                        show: this.state.currentTitle.length > 0,
+                        hideWhenDone: true
+                    }}
+                >
+                    ... who loves creating outstanding products! During my journey as a Developer I have worked on many projects, ranging from web, mobile, and desktop applications to videogames and most recently dApps (decentralized applications).
+                    <Typist.Delay ms={700}/>
+                </STypist>}
+                </Box>
+                <Box
+                    style={{
+                        flex: '0 0 40%'
+                    }}
+                >
+                <img 
+                    alt="Laptop"
+                    src={laptop}
+                    style={{
+                        //width: '30%'
+                        width: '100%'
+                    }}
+                />
+                </Box>
+            </Box>
+        </MainContainer>
         )
     }
 }
