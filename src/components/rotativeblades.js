@@ -108,7 +108,7 @@ const SvgCircle = ({
 )
 
 const Circle = ({ 
-    color = "pink", 
+    color,
     speed, 
     angle = 0, 
     containerStyle,
@@ -133,18 +133,22 @@ const Circle = ({
 class RotativeBlades extends React.Component
 {
     render() {
+
+        const { containerClassName, ...otherProps } = this.props;
+
         return (
-            <Box className={this.props.containerClassName}>
-                <Circle {...this.props}/>
+            <Box className={containerClassName}>
+                <Circle {...otherProps}/>
             </Box>
         );
     }
 };
 
 RotativeBlades.defaultProps = {
-    forward: true,
+    //forward: true,
     speed: 2.0,
-    color: "#FFFFFF"
+    color: "#FFFFFF",
+    containerClassName: ""
 }
 
 export default RotativeBlades;

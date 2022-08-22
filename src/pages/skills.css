@@ -164,15 +164,6 @@
     width: 100%;
 }
 
-.skill-area-title {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5em;
-    color: white;
-    position: absolute;
-    /*max-width: 105px;*/
-    text-align: center;
-}
-
 .skill-area-container > .skills-container-in > div {
     width: 4.5rem;
     margin: 0.5rem 1rem;

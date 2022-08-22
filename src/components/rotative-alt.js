@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import styled from "styled-components";
+import Palette from "../styles/palette";
+import CircularProgress from "./circularprogress";
 
 const RotatingSvg = styled.svg`
   overflow: visible;
@@ -29,6 +31,7 @@ const AnimatedLine = styled.path`
     }
   }
 `;
+
 const stroke = 4;
 
 const constRadius = 50;
@@ -115,7 +118,7 @@ const Circle = ({
           let dy = Math.sin(angle);
           let x = halfViewPort.x + dx * (constRadius + 8);
           let y = halfViewPort.y + dy * (constRadius + 8);
-          let x2 = x + dx * constRadius * 1.55;
+          let x2 = x + dx * constRadius * 1.5;
           let y2 = y + dy * constRadius * 1.5;
 
           let len = Math.sqrt(Math.pow(x2 - x, 2) + Math.pow(y2 - y, 2));
@@ -158,7 +161,27 @@ class RotativeBlades extends React.Component {
   render() {
     return (
       <div className={this.props.containerClassName}>
-        <Circle {...this.props} />
+        <svg width={50} height={50} style={{position: 'absolute'}}>
+            <defs>
+            <linearGradient id={"gradient_"+"a"} x1="0" y1="0" x2="1" y2="1">
+            {/* <stop offset="20%" stopColor="#39F" />
+            <stop offset="90%" stopColor="#F3F" /> */}
+            {/* <stop offset="20%" stopColor="#39F" /> */}
+            <stop offset="20%" stopColor={"blue"} />
+            <stop offset="90%" stopColor={Palette.primaryColor} />
+            </linearGradient>
+            </defs>
+        </svg>
+        {/* <Circle {...this.props} /> */}
+        <div style={{ backgroundColor: "#ffffff11", width: 200, height: 200 }}>
+          <CircularProgress 
+            duration={1.5}
+            color={"white"}
+            value={50}
+            startAngle={-90}
+            customGroup="gradient_a"
+          />
+        </div>
       </div>
     );
   }
@@ -167,7 +190,7 @@ class RotativeBlades extends React.Component {
 RotativeBlades.defaultProps = {
   forward: true,
   speed: 2.0,
-  color: "#FFFFFF"
+  color: "#FFFFFF",
 };
 
 export default RotativeBlades;

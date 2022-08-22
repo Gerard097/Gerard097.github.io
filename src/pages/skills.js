@@ -2,9 +2,11 @@ import React from "react"
 import {skills} from '../data/skills-info'
 import styled from "styled-components";
 import Carousel from "react-multi-carousel";
-import { CircularProgress, Typography, Box, makeStyles } from "@material-ui/core";
+import { Typography, Box, makeStyles } from "@material-ui/core";
 import Palette from '../styles/palette'
 import "react-multi-carousel/lib/styles.css";
+
+import CircularProgress from '../components/circularprogress'
 
 import './skills.css'
 import RotativeBlades from "../components/rotativeblades";
@@ -49,7 +51,7 @@ const SkillTarget = styled.div`
     .slide-imp:nth-child(${props => props.index}) > div > span.MuiRating-root > span:nth-child(4) {
         opacity: 1;
         transition: opacity 0.25s ease-in-out 1.25s;
-    }
+    }+group
     
     .slide-imp:nth-child(${props => props.index}) > div > span.MuiRating-root > span:nth-child(5) {
         opacity: 1;
@@ -78,15 +80,37 @@ const SkillTarget = styled.div`
     }
 `
 
-const useStyles = makeStyles(() => ({
-    circle: {
-        stroke: "url(#linearColors)",
-    },
-}));
+const SkillSetTitle = styled.h2`
 
-const CircularProgressWithLabel = ({label, value, onClick}) => {
+font-family: 'Courier New', Courier, monospace;
+font-size: 1.5em;
+color: ${props => props.color};
+position: absolute;
+/*max-width: 105px;*/
+text-align: center;
 
-    const classes = useStyles({});
+text-shadow: 0 0 4px ${props => props.color};
+
+animation-duration: 2s;
+animation-iteration-count: infinite;
+animation-direction: alternate;
+animation-timing-function: linear;
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px ${props => props.color};
+    }
+
+    100% {
+        text-shadow: 0 0 2px ${props => props.color};
+    }
+}
+`
+
+
+const CircularProgressWithLabel = ({label, group, value, onClick, color}) => {
+
+    console.log(color, label);
 
     return (
     <Box
@@ -113,18 +137,7 @@ const CircularProgressWithLabel = ({label, value, onClick}) => {
                 flexDirection: 'column'
             }}
         >
-            {/*Trick Used to create a glow effect and Gradient Color*/}
-            <svg width={50} height={50} style={{position: 'absolute'}}>
-                <defs>
-                <linearGradient id="linearColors" x1="0" y1="0" x2="1" y2="1">
-                {/* <stop offset="20%" stopColor="#39F" />
-                <stop offset="90%" stopColor="#F3F" /> */}
-                <stop offset="20%" stopColor="#39F" />
-                <stop offset="90%" stopColor={Palette.primaryColor} />
-                </linearGradient>
-                </defs>
-            </svg>
-            <CircularProgress
+            {/* <CircularProgress
                 size={50}
                 classes={{ circle: classes.circle}}
                 style={{color: Palette.secondary}}
@@ -136,7 +149,13 @@ const CircularProgressWithLabel = ({label, value, onClick}) => {
                 classes={{ circle: classes.circle}}
                 style={{color: Palette.secondary}}
                 value={value} 
-                variant="determinate"/>
+                variant="determinate"/> */}
+            <CircularProgress
+                containerStyle={{
+                    width: 50
+                }}
+                value={value}
+            />
             <Box
                 sx = {{
                     top: 0,
@@ -176,11 +195,11 @@ const CircularProgressWithLabel = ({label, value, onClick}) => {
     );
 }
 const skillSets = [
-    { label: "Frontend", key: "frontend" },
-    { label: "Backend", key: "backend" },
-    { label: "Game Dev", key: "gamedev" },
-    { label: "Tools", key: "tools" },
-    { label: "Soft Skills", key: "softskills" },
+    { label: "Frontend", key: "frontend", color: "#ffaa00" },
+    { label: "Backend", key: "backend", color: "blue" },
+    { label: "Game Dev", key: "gamedev", color: "red" },
+    { label: "Tools", key: "tools", color: "green" },
+    { label: "Soft Skills", key: "softskills", color: "yellow" },
     //{ label: "Blockchain", key: "blockchain" },
 ]
 
@@ -237,10 +256,11 @@ class SkillsPage extends React.Component
 
     render() {
 
-        const getSkills = (area, showPercentageValue) => this.skillAreas[area].map((skill, index) => {
+        const getSkills = (area, showPercentageValue, color) => this.skillAreas[area].map((skill, index) => {
             
             return (
-            <CircularProgressWithLabel 
+            <CircularProgressWithLabel
+                color={color}
                 key={skill} 
                 label={skill} 
                 value={showPercentageValue ? Math.min(skills[skill].rate * 20, 99) : 0}
@@ -288,8 +308,20 @@ class SkillsPage extends React.Component
                 showDots={false}
                 autoPlay={false}
             >
-                {skillSets.map(({key, label, icon}) => (
+                {skillSets.map(({key, label, color}) => (
                     <div key={key} className="skill-area-container">
+                        {/*Trick Used to create a glow effect and Gradient Color*/}
+                        <svg width={50} height={50} style={{position: 'absolute'}}>
+                            <defs>
+                            <linearGradient id={"gradient_"+key} x1="0" y1="0" x2="1" y2="1">
+                            {/* <stop offset="20%" stopColor="#39F" />
+                            <stop offset="90%" stopColor="#F3F" /> */}
+                            {/* <stop offset="20%" stopColor="#39F" /> */}
+                            <stop offset="20%" stopColor={color} />
+                            <stop offset="90%" stopColor={Palette.primaryColor} />
+                            </linearGradient>
+                            </defs>
+                        </svg>
                         <Box style={{
                             width: "35%",
                             maxWidth: "260px",
@@ -300,23 +332,29 @@ class SkillsPage extends React.Component
                             alignItems: 'center',
                             marginTop: "2rem"
                         }}>
-                            <RotativeBlades 
-                                //speed={2}
-                                speed = {0.1}
+                            <RotativeBlades
+                                speed={2}
+                                color={color} 
+                                //speed = {0.1}
                                 containerClassName="rotative-blades-container-out"
                             />
                             <RotativeBlades 
-                                //speed={6}
-                                speed = {0.2}
+                                speed={6}
+                                color={color} 
+                                //speed = {0.2}
                                 containerClassName="rotative-blades-container-in"
                             />
-                            <h2 className="skill-area-title">{label}</h2>
+                            <SkillSetTitle
+                                color={color} 
+                            >
+                                {label}
+                            </SkillSetTitle>
                         </Box>
                         <div className="skills-container-in" style={{
                             marginTop: 20,
                             justifyContent: 'space-evenly'
                         }}>
-                            {getSkills(key, this.state.showPercentageValue[key])}
+                            {getSkills(key, this.state.showPercentageValue[key], color)}
                         </div>
                     </div>
                 ))}
